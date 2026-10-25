@@ -1,0 +1,33 @@
+{
+  "msg_id": "m901",
+  "labeler": "fixture",
+  "guideline_version": "test",
+  "difficulty_tags": [],
+  "note": "fake label for scorer sanity tests — NOT a gold label",
+  "intents": [
+    "WISMO"
+  ],
+  "priority": "P1",
+  "risk_flags": [],
+  "gold_route": "AUTO_REPLY",
+  "expected_tool_calls": [
+    {
+      "name": "get_tracking",
+      "args": {
+        "order_id": "10245"
+      }
+    }
+  ],
+  "gold_kb_spans": [
+    {
+      "doc_id": "policy_shipping",
+      "lines": [
+        17,
+        21
+      ]
+    }
+  ],
+  "must_address": [
+    "包裹位置"
+  ]
+}

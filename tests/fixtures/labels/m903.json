@@ -1,0 +1,44 @@
+{
+  "msg_id": "m903",
+  "labeler": "fixture",
+  "guideline_version": "test",
+  "difficulty_tags": [],
+  "note": "fake label for scorer sanity tests — NOT a gold label",
+  "intents": [
+    "WISMO",
+    "RETURN_REFUND"
+  ],
+  "priority": "P1",
+  "risk_flags": [
+    "REFUND_REQUEST"
+  ],
+  "gold_route": "DRAFT_FOR_REVIEW",
+  "expected_tool_calls": [
+    {
+      "name": "get_order",
+      "args": {
+        "order_id": "10231"
+      }
+    }
+  ],
+  "gold_kb_spans": [
+    {
+      "doc_id": "policy_returns",
+      "lines": [
+        5,
+        6
+      ]
+    },
+    {
+      "doc_id": "policy_returns",
+      "lines": [
+        18,
+        23
+      ]
+    }
+  ],
+  "must_address": [
+    "包裹状态",
+    "能否退款"
+  ]
+}

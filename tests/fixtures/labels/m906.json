@@ -1,0 +1,16 @@
+{
+  "msg_id": "m906",
+  "labeler": "fixture",
+  "guideline_version": "test",
+  "difficulty_tags": [],
+  "note": "fake label for scorer sanity tests — NOT a gold label",
+  "intents": [
+    "OTHER"
+  ],
+  "priority": "P2",
+  "risk_flags": [],
+  "gold_route": "AUTO_REPLY",
+  "expected_tool_calls": [],
+  "gold_kb_spans": [],
+  "must_address": []
+}

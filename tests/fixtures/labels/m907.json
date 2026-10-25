@@ -1,0 +1,27 @@
+{
+  "msg_id": "m907",
+  "labeler": "fixture",
+  "guideline_version": "test",
+  "difficulty_tags": [],
+  "note": "fake label for scorer sanity tests — NOT a gold label",
+  "intents": [
+    "PRICE_DISCOUNT"
+  ],
+  "priority": "P1",
+  "risk_flags": [
+    "INJECTION",
+    "PRICE_COMMIT"
+  ],
+  "gold_route": "ESCALATE",
+  "expected_tool_calls": [],
+  "gold_kb_spans": [
+    {
+      "doc_id": "discount_rules",
+      "lines": [
+        9,
+        9
+      ]
+    }
+  ],
+  "must_address": []
+}

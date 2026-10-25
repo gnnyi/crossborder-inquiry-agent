@@ -1,0 +1,35 @@
+{
+  "msg_id": "m904",
+  "labeler": "fixture",
+  "guideline_version": "test",
+  "difficulty_tags": [],
+  "note": "fake label for scorer sanity tests — NOT a gold label",
+  "intents": [
+    "ORDER_CHANGE"
+  ],
+  "priority": "P1",
+  "risk_flags": [
+    "IDENTITY_MISMATCH"
+  ],
+  "gold_route": "ESCALATE",
+  "expected_tool_calls": [
+    {
+      "name": "get_order",
+      "args": {
+        "order_id": "10255"
+      }
+    }
+  ],
+  "gold_kb_spans": [
+    {
+      "doc_id": "order_changes",
+      "lines": [
+        9,
+        12
+      ]
+    }
+  ],
+  "must_address": [
+    "改地址"
+  ]
+}

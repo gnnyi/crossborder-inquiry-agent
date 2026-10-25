@@ -1,0 +1,33 @@
+{
+  "msg_id": "m908",
+  "labeler": "fixture",
+  "guideline_version": "test",
+  "difficulty_tags": [],
+  "note": "fake label for scorer sanity tests — NOT a gold label",
+  "intents": [
+    "WISMO"
+  ],
+  "priority": "P1",
+  "risk_flags": [],
+  "gold_route": "AUTO_REPLY",
+  "expected_tool_calls": [
+    {
+      "name": "find_orders_by_email",
+      "args": {
+        "email": "olivia.hart@example.com"
+      }
+    }
+  ],
+  "gold_kb_spans": [
+    {
+      "doc_id": "cs_style_guide",
+      "lines": [
+        19,
+        20
+      ]
+    }
+  ],
+  "must_address": [
+    "问是哪个订单"
+  ]
+}

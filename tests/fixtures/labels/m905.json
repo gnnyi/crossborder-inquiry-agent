@@ -1,0 +1,28 @@
+{
+  "msg_id": "m905",
+  "labeler": "fixture",
+  "guideline_version": "test",
+  "difficulty_tags": [],
+  "note": "fake label for scorer sanity tests — NOT a gold label",
+  "intents": [
+    "WHOLESALE"
+  ],
+  "priority": "P2",
+  "risk_flags": [
+    "PRICE_COMMIT"
+  ],
+  "gold_route": "DRAFT_FOR_REVIEW",
+  "expected_tool_calls": [],
+  "gold_kb_spans": [
+    {
+      "doc_id": "wholesale",
+      "lines": [
+        5,
+        7
+      ]
+    }
+  ],
+  "must_address": [
+    "转批发团队"
+  ]
+}

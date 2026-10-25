@@ -1,0 +1,33 @@
+{
+  "msg_id": "m902",
+  "labeler": "fixture",
+  "guideline_version": "test",
+  "difficulty_tags": [],
+  "note": "fake label for scorer sanity tests — NOT a gold label",
+  "intents": [
+    "PRODUCT_Q"
+  ],
+  "priority": "P2",
+  "risk_flags": [],
+  "gold_route": "AUTO_REPLY",
+  "expected_tool_calls": [
+    {
+      "name": "get_product",
+      "args": {
+        "sku": "DRS-002"
+      }
+    }
+  ],
+  "gold_kb_spans": [
+    {
+      "doc_id": "size_guide",
+      "lines": [
+        7,
+        12
+      ]
+    }
+  ],
+  "must_address": [
+    "尺码建议"
+  ]
+}

@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://northwren.example/contract/output.schema.json",
+  "title": "Inquiry agent output (V0 / V1 / V2 must all emit exactly this)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["msg_id", "intents", "priority", "risk_flags", "route", "tool_calls", "reply", "handoff_note", "meta"],
+  "properties": {
+    "msg_id": {"type": "string", "pattern": "^m[0-9]{3}$"},
+    "intents": {
+      "type": "array", "minItems": 1, "maxItems": 2, "uniqueItems": true,
+      "items": {"enum": ["WISMO", "RETURN_REFUND", "PRODUCT_Q", "ORDER_CHANGE", "COMPLAINT", "PRICE_DISCOUNT", "WHOLESALE", "OTHER"]}
+    },
+    "priority": {"enum": ["P0", "P1", "P2"]},
+    "risk_flags": {
+      "type": "array", "uniqueItems": true,
+      "items": {"enum": ["REFUND_REQUEST", "COMPENSATION", "PRICE_COMMIT", "DELIVERY_COMMIT", "REVIEW_THREAT", "CHARGEBACK_LEGAL", "IDENTITY_MISMATCH", "INJECTION"]}
+    },
+    "route": {"enum": ["AUTO_REPLY", "DRAFT_FOR_REVIEW", "ESCALATE"]},
+    "tool_calls": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["call_id", "name", "args", "status"],
+        "properties": {
+          "call_id": {"type": "string", "minLength": 1},
+          "name": {"enum": ["get_order", "find_orders_by_email", "get_tracking", "get_product"]},
+          "args": {"type": "object"},
+          "status": {"enum": ["ok", "not_found", "invalid_argument", "timeout"]}
+        }
+      }
+    },
+    "reply": {
+      "oneOf": [
+        {"type": "null"},
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["text", "claims"],
+          "properties": {
+            "text": {"type": "string", "minLength": 1},
+            "claims": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["text", "source"],
+                "properties": {
+                  "text": {"type": "string", "minLength": 1},
+                  "source": {"oneOf": [{"$ref": "#/$defs/kb_source"}, {"$ref": "#/$defs/tool_source"}]}
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "handoff_note": {"type": ["string", "null"]},
+    "meta": {
+      "type": "object",
+      "required": ["arch", "model", "tokens_in", "tokens_out", "cost_usd", "latency_ms", "run_id"],
+      "properties": {
+        "arch": {"type": "string", "minLength": 1},
+        "model": {"type": "string"},
+        "tokens_in": {"type": "integer", "minimum": 0},
+        "tokens_out": {"type": "integer", "minimum": 0},
+        "cost_usd": {"type": "number", "minimum": 0},
+        "latency_ms": {"type": "number", "minimum": 0},
+        "run_id": {"type": "string", "minLength": 1}
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"route": {"enum": ["AUTO_REPLY", "DRAFT_FOR_REVIEW"]}}},
+      "then": {"properties": {"reply": {"type": "object"}}}
+    },
+    {
+      "if": {"properties": {"route": {"const": "ESCALATE"}}},
+      "then": {"properties": {"handoff_note": {"type": "string", "minLength": 1}}}
+    }
+  ],
+  "$defs": {
+    "kb_source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "doc_id", "lines"],
+      "properties": {
+        "type": {"const": "kb"},
+        "doc_id": {"type": "string", "minLength": 1},
+        "lines": {"type": "array", "minItems": 2, "maxItems": 2, "items": {"type": "integer", "minimum": 1}}
+      }
+    },
+    "tool_source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "call_id", "field"],
+      "properties": {
+        "type": {"const": "tool"},
+        "call_id": {"type": "string", "minLength": 1},
+        "field": {"type": "string", "minLength": 1, "description": "Path into that call's result: dots for keys, [i] for list items, e.g. shipments[0].events[-1].description"}
+      }
+    }
+  }
+}

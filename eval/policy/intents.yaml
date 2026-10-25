@@ -1,0 +1,28 @@
+# 意图表 v1。每条消息最多 2 个意图。
+version: v1
+max_per_message: 2
+intents:
+  - code: WISMO
+    meaning: 物流 / 订单状态查询
+    example: 我的包裹到哪了
+  - code: RETURN_REFUND
+    meaning: 退换货、退款
+    example: 尺码小了想换大一码
+  - code: PRODUCT_Q
+    meaning: 商品咨询：尺码、面料、洗护
+    example: 这件是真丝吗
+  - code: ORDER_CHANGE
+    meaning: 改地址、改商品、取消订单
+    example: 还没发货的话帮我取消
+  - code: COMPLAINT
+    meaning: 质量问题、服务不满
+    example: 收到就开线了
+  - code: PRICE_DISCOUNT
+    meaning: 价格、折扣、优惠码
+    example: 我的折扣码用不了
+  - code: WHOLESALE
+    meaning: B2B 批量询价
+    example: 想拿 200 件做分销
+  - code: OTHER
+    meaning: 其他、垃圾信息、无法理解
+    example: 广告、空白邮件

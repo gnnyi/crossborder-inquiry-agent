@@ -359,6 +359,7 @@ def check_messages(c: Checker, orders: list[dict], by_sku: dict[str, dict], stat
                 notes[n["msg_id"]] = n
     order_ids = {o["order_id"] for o in orders}
     order_email = {o["order_id"]: o["email"].lower() for o in orders}
+    order_created = {o["order_id"]: o["created_at"] for o in orders}
     emails = {o["email"].lower() for o in orders}
     ids = [m["msg_id"] for m in msgs]
     if len(set(ids)) != len(ids):
@@ -404,7 +405,10 @@ def check_messages(c: Checker, orders: list[dict], by_sku: dict[str, dict], stat
         refs = note.get("refs", {})
         bad = set(refs.get("bad_order_refs", []))
         declared = set(refs.get("orders", []))
+        ignore = set(refs.get("non_order_numbers", []))
         for tok in order_tokens(text):
+            if tok in ignore:
+                continue
             if tok in order_ids:
                 if tok not in declared:
                     c.err(f"{mid}: mentions order {tok} not declared in sealed refs.orders")
@@ -413,6 +417,8 @@ def check_messages(c: Checker, orders: list[dict], by_sku: dict[str, dict], stat
         for oid in declared:
             if oid not in order_ids:
                 c.err(f"{mid}: sealed refs.orders has unknown order {oid}")
+            elif order_created[oid] > thread[0]["ts"]:
+                c.err(f"{mid}: thread starts before order {oid} was created")
         for b in bad:
             if b in order_ids:
                 c.err(f"{mid}: bad_order_ref {b} actually exists")
@@ -430,14 +436,13 @@ def check_messages(c: Checker, orders: list[dict], by_sku: dict[str, dict], stat
             c.err(f"{mid}: sealed says sender has orders but {sender} has none")
         if refs.get("sender_has_orders") is False and sender in emails:
             c.err(f"{mid}: sealed says sender has no orders but {sender} has some")
-        for call in note.get("expected_tool_calls", []):
+        for call in note.get("pre_label", {}).get("expected_tool_calls", note.get("expected_tool_calls", [])):
             a = call["args"]
             if call["name"] in {"get_order", "get_tracking"} and a["order_id"] not in order_ids:
                 c.err(f"{mid}: expected call {call} references unknown order")
             if call["name"] == "get_product" and a["sku"] not in by_sku:
                 c.err(f"{mid}: expected call {call} references unknown sku")
-            if call["name"] == "find_orders_by_email" and a["email"].lower() not in emails:
-                c.err(f"{mid}: expected call {call}: email has no orders (should the call still be expected?)")
+            # find_orders_by_email on an address with no orders is a legitimate expectation (look up, then ask)
     if notes and set(notes) != set(ids):
         c.err(f"generation_notes / messages id mismatch: {sorted(set(notes) ^ set(ids))[:10]}")
     if stats:

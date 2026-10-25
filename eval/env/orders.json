@@ -1,0 +1,3368 @@
+[
+  {
+    "order_id": "10201",
+    "email": "hannah.brooks@example.com",
+    "customer_name": "Hannah Brooks",
+    "created_at": "2026-07-22T02:12:00Z",
+    "status": "delivered",
+    "items": [
+      {
+        "sku": "TOP-002",
+        "name": "Hollis Linen Shirt",
+        "size": "S",
+        "color": "White",
+        "qty": 1,
+        "unit_price": 78.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": "SUMMER20",
+    "discount_amount": 15.6,
+    "subtotal": 78.0,
+    "shipping_fee": 8.95,
+    "total": 71.35,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Hannah Brooks",
+      "country": "US",
+      "region": "TX",
+      "city": "Austin",
+      "postal": "78704",
+      "line1": "2210 Pecan Hollow Dr"
+    },
+    "shipping_method": "standard",
+    "shipped_at": "2026-07-24T10:40:00Z",
+    "delivered_at": "2026-08-04T14:22:00Z",
+    "carrier": "YunExpress",
+    "tracking_number": "YT2603355830856128",
+    "shipments": [
+      {
+        "shipment_id": "10201-1",
+        "line_indexes": [
+          0
+        ],
+        "carrier": "YunExpress",
+        "tracking_number": "YT2603355830856128",
+        "shipped_at": "2026-07-24T10:40:00Z",
+        "delivered_at": "2026-08-04T14:22:00Z",
+        "status": "delivered"
+      }
+    ],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10202",
+    "email": "priya.n@example.net",
+    "customer_name": "Priya Natarajan",
+    "created_at": "2026-07-25T03:09:00Z",
+    "status": "delivered",
+    "items": [
+      {
+        "sku": "DRS-001",
+        "name": "Marlow Linen Midi Dress",
+        "size": "M",
+        "color": "Sand",
+        "qty": 1,
+        "unit_price": 128.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 128.0,
+    "shipping_fee": 12.95,
+    "total": 140.95,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Priya Natarajan",
+      "country": "GB",
+      "region": null,
+      "city": "London",
+      "postal": "NW3 4QE",
+      "line1": "22 Haverstock Mews"
+    },
+    "shipping_method": "standard",
+    "shipped_at": "2026-07-27T10:40:00Z",
+    "delivered_at": "2026-08-07T14:22:00Z",
+    "carrier": "YunExpress",
+    "tracking_number": "YT2647257503763174",
+    "shipments": [
+      {
+        "shipment_id": "10202-1",
+        "line_indexes": [
+          0
+        ],
+        "carrier": "YunExpress",
+        "tracking_number": "YT2647257503763174",
+        "shipped_at": "2026-07-27T10:40:00Z",
+        "delivered_at": "2026-08-07T14:22:00Z",
+        "status": "delivered"
+      }
+    ],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10203",
+    "email": "olivia.hart@example.com",
+    "customer_name": "Olivia Hart",
+    "created_at": "2026-07-28T11:46:00Z",
+    "status": "delivered",
+    "items": [
+      {
+        "sku": "SKT-001",
+        "name": "Paloma Pleated Midi Skirt",
+        "size": "S",
+        "color": "Black",
+        "qty": 1,
+        "unit_price": 88.0,
+        "final_sale": false
+      },
+      {
+        "sku": "TOP-003",
+        "name": "Bea Ribbed Tank",
+        "size": "S",
+        "color": "Black",
+        "qty": 1,
+        "unit_price": 42.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": "WELCOME10",
+    "discount_amount": 13.0,
+    "subtotal": 130.0,
+    "shipping_fee": 0.0,
+    "total": 117.0,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Olivia Hart",
+      "country": "US",
+      "region": "OH",
+      "city": "Columbus",
+      "postal": "43215",
+      "line1": "781 Linden Park Ave"
+    },
+    "shipping_method": "standard",
+    "shipped_at": "2026-07-30T10:40:00Z",
+    "delivered_at": "2026-08-10T14:22:00Z",
+    "carrier": "YunExpress",
+    "tracking_number": "YT2670658266221189",
+    "shipments": [
+      {
+        "shipment_id": "10203-1",
+        "line_indexes": [
+          0,
+          1
+        ],
+        "carrier": "YunExpress",
+        "tracking_number": "YT2670658266221189",
+        "shipped_at": "2026-07-30T10:40:00Z",
+        "delivered_at": "2026-08-10T14:22:00Z",
+        "status": "delivered"
+      }
+    ],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10204",
+    "email": "lena.vogt@example.org",
+    "customer_name": "Lena Vogt",
+    "created_at": "2026-08-01T00:01:00Z",
+    "status": "delivered",
+    "items": [
+      {
+        "sku": "KNT-004",
+        "name": "Nora Knit Polo",
+        "size": "M",
+        "color": "Navy",
+        "qty": 1,
+        "unit_price": 72.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 72.0,
+    "shipping_fee": 12.95,
+    "total": 84.95,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Lena Vogt",
+      "country": "DE",
+      "region": null,
+      "city": "Hamburg",
+      "postal": "22767",
+      "line1": "Talstraße 41"
+    },
+    "shipping_method": "standard",
+    "shipped_at": "2026-08-03T10:40:00Z",
+    "delivered_at": "2026-08-15T14:22:00Z",
+    "carrier": "4PX",
+    "tracking_number": "4PX3083299451140CN",
+    "shipments": [
+      {
+        "shipment_id": "10204-1",
+        "line_indexes": [
+          0
+        ],
+        "carrier": "4PX",
+        "tracking_number": "4PX3083299451140CN",
+        "shipped_at": "2026-08-03T10:40:00Z",
+        "delivered_at": "2026-08-15T14:22:00Z",
+        "status": "delivered"
+      }
+    ],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10205",
+    "email": "tgreene84@example.com",
+    "customer_name": "Tasha Greene",
+    "created_at": "2026-08-03T03:11:00Z",
+    "status": "delivered",
+    "items": [
+      {
+        "sku": "DRS-002",
+        "name": "Clementine Silk Slip Dress",
+        "size": "S",
+        "color": "Ink",
+        "qty": 1,
+        "unit_price": 168.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 168.0,
+    "shipping_fee": 19.95,
+    "total": 187.95,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Tasha Greene",
+      "country": "US",
+      "region": "GA",
+      "city": "Atlanta",
+      "postal": "30307",
+      "line1": "1180 Briar Vista Ct"
+    },
+    "shipping_method": "express",
+    "shipped_at": "2026-08-04T10:40:00Z",
+    "delivered_at": "2026-08-09T14:22:00Z",
+    "carrier": "DHL Express",
+    "tracking_number": "0605813351",
+    "shipments": [
+      {
+        "shipment_id": "10205-1",
+        "line_indexes": [
+          0
+        ],
+        "carrier": "DHL Express",
+        "tracking_number": "0605813351",
+        "shipped_at": "2026-08-04T10:40:00Z",
+        "delivered_at": "2026-08-09T14:22:00Z",
+        "status": "delivered"
+      }
+    ],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10206",
+    "email": "mia.kowalski@example.net",
+    "customer_name": "Mia Kowalski",
+    "created_at": "2026-08-06T08:54:00Z",
+    "status": "delivered",
+    "items": [
+      {
+        "sku": "PNT-002",
+        "name": "Ivy Linen Drawstring Pants",
+        "size": "S",
+        "color": "Natural",
+        "qty": 1,
+        "unit_price": 84.0,
+        "final_sale": false
+      },
+      {
+        "sku": "TOP-002",
+        "name": "Hollis Linen Shirt",
+        "size": "S",
+        "color": "Olive",
+        "qty": 1,
+        "unit_price": 78.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 162.0,
+    "shipping_fee": 0.0,
+    "total": 162.0,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Mia Kowalski",
+      "country": "AU",
+      "region": "VIC",
+      "city": "Melbourne",
+      "postal": "3056",
+      "line1": "14 Merri Lane"
+    },
+    "shipping_method": "standard",
+    "shipped_at": "2026-08-08T10:40:00Z",
+    "delivered_at": "2026-08-22T14:22:00Z",
+    "carrier": "YunExpress",
+    "tracking_number": "YT2616606920152405",
+    "shipments": [
+      {
+        "shipment_id": "10206-1",
+        "line_indexes": [
+          0,
+          1
+        ],
+        "carrier": "YunExpress",
+        "tracking_number": "YT2616606920152405",
+        "shipped_at": "2026-08-08T10:40:00Z",
+        "delivered_at": "2026-08-22T14:22:00Z",
+        "status": "delivered"
+      }
+    ],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10207",
+    "email": "camille.durand@example.org",
+    "customer_name": "Camille Durand",
+    "created_at": "2026-08-09T19:53:00Z",
+    "status": "delivered",
+    "items": [
+      {
+        "sku": "DRS-003",
+        "name": "Juniper Wrap Dress",
+        "size": "M",
+        "color": "Rust",
+        "qty": 1,
+        "unit_price": 98.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": "SUMMER20",
+    "discount_amount": 19.6,
+    "subtotal": 98.0,
+    "shipping_fee": 12.95,
+    "total": 91.35,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Camille Durand",
+      "country": "FR",
+      "region": null,
+      "city": "Lyon",
+      "postal": "69004",
+      "line1": "12 rue des Tisserands"
+    },
+    "shipping_method": "standard",
+    "shipped_at": "2026-08-11T10:40:00Z",
+    "delivered_at": "2026-08-23T14:22:00Z",
+    "carrier": "4PX",
+    "tracking_number": "4PX3046963981549CN",
+    "shipments": [
+      {
+        "shipment_id": "10207-1",
+        "line_indexes": [
+          0
+        ],
+        "carrier": "4PX",
+        "tracking_number": "4PX3046963981549CN",
+        "shipped_at": "2026-08-11T10:40:00Z",
+        "delivered_at": "2026-08-23T14:22:00Z",
+        "status": "delivered"
+      }
+    ],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10208",
+    "email": "jordan.liu@example.com",
+    "customer_name": "Jordan Liu",
+    "created_at": "2026-08-12T02:05:00Z",
+    "status": "delivered",
+    "items": [
+      {
+        "sku": "OUT-003",
+        "name": "Pippa Quilted Jacket",
+        "size": "M",
+        "color": "Olive",
+        "qty": 1,
+        "unit_price": 124.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 124.0,
+    "shipping_fee": 12.95,
+    "total": 136.95,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Jordan Liu",
+      "country": "CA",
+      "region": "ON",
+      "city": "Toronto",
+      "postal": "M6J 1H4",
+      "line1": "88 Bellwoods Grove"
+    },
+    "shipping_method": "standard",
+    "shipped_at": "2026-08-14T10:40:00Z",
+    "delivered_at": "2026-08-27T14:22:00Z",
+    "carrier": "YunExpress",
+    "tracking_number": "YT2654422216861845",
+    "shipments": [
+      {
+        "shipment_id": "10208-1",
+        "line_indexes": [
+          0
+        ],
+        "carrier": "YunExpress",
+        "tracking_number": "YT2654422216861845",
+        "shipped_at": "2026-08-14T10:40:00Z",
+        "delivered_at": "2026-08-27T14:22:00Z",
+        "status": "delivered"
+      }
+    ],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10209",
+    "email": "rachelkim.nyc@example.com",
+    "customer_name": "Rachel Kim",
+    "created_at": "2026-08-15T09:37:00Z",
+    "status": "delivered",
+    "items": [
+      {
+        "sku": "TOP-005",
+        "name": "Iris Lace Camisole",
+        "size": "S",
+        "color": "Black",
+        "qty": 1,
+        "unit_price": 49.0,
+        "final_sale": true
+      },
+      {
+        "sku": "SKT-003",
+        "name": "Celeste Satin Bias Skirt",
+        "size": "S",
+        "color": "Black",
+        "qty": 1,
+        "unit_price": 74.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 123.0,
+    "shipping_fee": 0.0,
+    "total": 123.0,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Rachel Kim",
+      "country": "US",
+      "region": "NY",
+      "city": "Brooklyn",
+      "postal": "11216",
+      "line1": "455 Halsey Row, Apt 3F"
+    },
+    "shipping_method": "standard",
+    "shipped_at": "2026-08-17T10:40:00Z",
+    "delivered_at": "2026-08-26T14:22:00Z",
+    "carrier": "YunExpress",
+    "tracking_number": "YT2665473192846294",
+    "shipments": [
+      {
+        "shipment_id": "10209-1",
+        "line_indexes": [
+          0,
+          1
+        ],
+        "carrier": "YunExpress",
+        "tracking_number": "YT2665473192846294",
+        "shipped_at": "2026-08-17T10:40:00Z",
+        "delivered_at": "2026-08-26T14:22:00Z",
+        "status": "delivered"
+      }
+    ],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10210",
+    "email": "carmen.ortega@example.net",
+    "customer_name": "Carmen Ortega",
+    "created_at": "2026-08-18T23:43:00Z",
+    "status": "delivered",
+    "items": [
+      {
+        "sku": "DRS-007",
+        "name": "Ottilie Shirt Dress",
+        "size": "M",
+        "color": "White",
+        "qty": 1,
+        "unit_price": 112.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 112.0,
+    "shipping_fee": 12.95,
+    "total": 124.95,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Carmen Ortega",
+      "country": "ES",
+      "region": null,
+      "city": "Valencia",
+      "postal": "46005",
+      "line1": "Calle del Mar Menor 19, 2º"
+    },
+    "shipping_method": "standard",
+    "shipped_at": "2026-08-20T10:40:00Z",
+    "delivered_at": "2026-09-02T14:22:00Z",
+    "carrier": "4PX",
+    "tracking_number": "4PX3072953526257CN",
+    "shipments": [
+      {
+        "shipment_id": "10210-1",
+        "line_indexes": [
+          0
+        ],
+        "carrier": "4PX",
+        "tracking_number": "4PX3072953526257CN",
+        "shipped_at": "2026-08-20T10:40:00Z",
+        "delivered_at": "2026-09-02T14:22:00Z",
+        "status": "delivered"
+      }
+    ],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10211",
+    "email": "megan.oneill@example.com",
+    "customer_name": "Megan O'Neill",
+    "created_at": "2026-08-20T20:33:00Z",
+    "status": "returned",
+    "items": [
+      {
+        "sku": "DRS-001",
+        "name": "Marlow Linen Midi Dress",
+        "size": "L",
+        "color": "Black",
+        "qty": 1,
+        "unit_price": 128.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 128.0,
+    "shipping_fee": 0.0,
+    "total": 128.0,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Megan O'Neill",
+      "country": "US",
+      "region": "IL",
+      "city": "Chicago",
+      "postal": "60614",
+      "line1": "2033 N Larchmont St"
+    },
+    "shipping_method": "standard",
+    "shipped_at": "2026-08-22T10:40:00Z",
+    "delivered_at": "2026-09-01T14:22:00Z",
+    "carrier": "YunExpress",
+    "tracking_number": "YT2614395432742185",
+    "shipments": [
+      {
+        "shipment_id": "10211-1",
+        "line_indexes": [
+          0
+        ],
+        "carrier": "YunExpress",
+        "tracking_number": "YT2614395432742185",
+        "shipped_at": "2026-08-22T10:40:00Z",
+        "delivered_at": "2026-09-01T14:22:00Z",
+        "status": "delivered"
+      }
+    ],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": {
+      "rma_id": "RMA-10211",
+      "requested_at": "2026-09-05T15:02:00Z",
+      "line_indexes": [
+        0
+      ],
+      "return_label": "prepaid_us",
+      "label_fee_usd": 7.95,
+      "received_at": "2026-09-16T11:30:00Z",
+      "inspection_status": "passed",
+      "refund_status": "refunded",
+      "refund_amount_usd": 120.05,
+      "refunded_at": "2026-09-18T09:15:00Z"
+    },
+    "cancellation": null
+  },
+  {
+    "order_id": "10212",
+    "email": "sanne.dewit@example.org",
+    "customer_name": "Sanne de Wit",
+    "created_at": "2026-08-22T23:29:00Z",
+    "status": "delivered",
+    "items": [
+      {
+        "sku": "KNT-002",
+        "name": "Bram Cable Cardigan",
+        "size": "S",
+        "color": "Cream",
+        "qty": 1,
+        "unit_price": 128.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 128.0,
+    "shipping_fee": 12.95,
+    "total": 140.95,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Sanne de Wit",
+      "country": "NL",
+      "region": null,
+      "city": "Utrecht",
+      "postal": "3512 AB",
+      "line1": "Oudegracht-Zuid 77"
+    },
+    "shipping_method": "standard",
+    "shipped_at": "2026-08-24T10:40:00Z",
+    "delivered_at": "2026-09-05T14:22:00Z",
+    "carrier": "4PX",
+    "tracking_number": "4PX3084468890892CN",
+    "shipments": [
+      {
+        "shipment_id": "10212-1",
+        "line_indexes": [
+          0
+        ],
+        "carrier": "4PX",
+        "tracking_number": "4PX3084468890892CN",
+        "shipped_at": "2026-08-24T10:40:00Z",
+        "delivered_at": "2026-09-05T14:22:00Z",
+        "status": "delivered"
+      }
+    ],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10213",
+    "email": "bri.scott@example.com",
+    "customer_name": "Brianna Scott",
+    "created_at": "2026-08-24T15:16:00Z",
+    "status": "cancelled",
+    "items": [
+      {
+        "sku": "DRS-005",
+        "name": "Wren Knit Sweater Dress",
+        "size": "S",
+        "color": "Oatmeal",
+        "qty": 1,
+        "unit_price": 136.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 136.0,
+    "shipping_fee": 0.0,
+    "total": 136.0,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Brianna Scott",
+      "country": "US",
+      "region": "CO",
+      "city": "Denver",
+      "postal": "80206",
+      "line1": "915 Clarkson Bend"
+    },
+    "shipping_method": "standard",
+    "shipped_at": null,
+    "delivered_at": null,
+    "carrier": null,
+    "tracking_number": null,
+    "shipments": [],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": {
+      "cancelled_at": "2026-08-24T16:23:00Z",
+      "reason": "customer_request",
+      "refund_status": "refunded",
+      "refund_amount_usd": 136.0
+    }
+  },
+  {
+    "order_id": "10214",
+    "email": "eleanor.price@example.com",
+    "customer_name": "Eleanor Price",
+    "created_at": "2026-08-26T13:27:00Z",
+    "status": "delivered",
+    "items": [
+      {
+        "sku": "PNT-001",
+        "name": "Rowan Wide-Leg Trousers",
+        "size": "M",
+        "color": "Black",
+        "qty": 1,
+        "unit_price": 108.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 108.0,
+    "shipping_fee": 12.95,
+    "total": 120.95,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Eleanor Price",
+      "country": "GB",
+      "region": null,
+      "city": "Manchester",
+      "postal": "M20 2RN",
+      "line1": "6 Didsbury Close"
+    },
+    "shipping_method": "standard",
+    "shipped_at": "2026-08-28T10:40:00Z",
+    "delivered_at": "2026-09-08T14:22:00Z",
+    "carrier": "YunExpress",
+    "tracking_number": "YT2671818521517577",
+    "shipments": [
+      {
+        "shipment_id": "10214-1",
+        "line_indexes": [
+          0
+        ],
+        "carrier": "YunExpress",
+        "tracking_number": "YT2671818521517577",
+        "shipped_at": "2026-08-28T10:40:00Z",
+        "delivered_at": "2026-09-08T14:22:00Z",
+        "status": "delivered"
+      }
+    ],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10215",
+    "email": "mareike.schneider@example.net",
+    "customer_name": "Mareike Schneider",
+    "created_at": "2026-08-28T14:22:00Z",
+    "status": "delivered",
+    "items": [
+      {
+        "sku": "TOP-001",
+        "name": "Selene Silk Blouse",
+        "size": "M",
+        "color": "Ivory",
+        "qty": 1,
+        "unit_price": 118.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 118.0,
+    "shipping_fee": 12.95,
+    "total": 130.95,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Mareike Schneider",
+      "country": "DE",
+      "region": null,
+      "city": "Köln",
+      "postal": "50672",
+      "line1": "Brüsseler Hof 8"
+    },
+    "shipping_method": "standard",
+    "shipped_at": "2026-08-31T10:40:00Z",
+    "delivered_at": "2026-09-11T14:22:00Z",
+    "carrier": "4PX",
+    "tracking_number": "4PX3081984277865CN",
+    "shipments": [
+      {
+        "shipment_id": "10215-1",
+        "line_indexes": [
+          0
+        ],
+        "carrier": "4PX",
+        "tracking_number": "4PX3081984277865CN",
+        "shipped_at": "2026-08-31T10:40:00Z",
+        "delivered_at": "2026-09-11T14:22:00Z",
+        "status": "delivered"
+      }
+    ],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10216",
+    "email": "kayla.morgan@example.com",
+    "customer_name": "Kayla Morgan",
+    "created_at": "2026-08-30T03:10:00Z",
+    "status": "delivered",
+    "items": [
+      {
+        "sku": "SKT-002",
+        "name": "Dune Denim Midi Skirt",
+        "size": "S",
+        "color": "Mid Wash",
+        "qty": 1,
+        "unit_price": 92.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 92.0,
+    "shipping_fee": 0.0,
+    "total": 92.0,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Kayla Morgan",
+      "country": "US",
+      "region": "CA",
+      "city": "San Diego",
+      "postal": "92104",
+      "line1": "3381 Juniper Terrace"
+    },
+    "shipping_method": "standard",
+    "shipped_at": "2026-09-01T10:40:00Z",
+    "delivered_at": "2026-09-12T14:22:00Z",
+    "carrier": "YunExpress",
+    "tracking_number": "YT2692434262700539",
+    "shipments": [
+      {
+        "shipment_id": "10216-1",
+        "line_indexes": [
+          0
+        ],
+        "carrier": "YunExpress",
+        "tracking_number": "YT2692434262700539",
+        "shipped_at": "2026-09-01T10:40:00Z",
+        "delivered_at": "2026-09-12T14:22:00Z",
+        "status": "delivered"
+      }
+    ],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10217",
+    "email": "danielle.reyes@example.com",
+    "customer_name": "Danielle Reyes",
+    "created_at": "2026-09-02T10:10:00Z",
+    "status": "delivered",
+    "items": [
+      {
+        "sku": "ACC-001",
+        "name": "Esme Silk Scarf",
+        "size": "OS",
+        "color": "Floral Blue",
+        "qty": 1,
+        "unit_price": 48.0,
+        "final_sale": false
+      },
+      {
+        "sku": "TOP-003",
+        "name": "Bea Ribbed Tank",
+        "size": "M",
+        "color": "White",
+        "qty": 1,
+        "unit_price": 42.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 90.0,
+    "shipping_fee": 8.95,
+    "total": 98.95,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Danielle Reyes",
+      "country": "US",
+      "region": "AZ",
+      "city": "Phoenix",
+      "postal": "85004",
+      "line1": "610 E Saguaro Pl"
+    },
+    "shipping_method": "standard",
+    "shipped_at": "2026-09-04T10:40:00Z",
+    "delivered_at": "2026-09-15T14:22:00Z",
+    "carrier": "YunExpress",
+    "tracking_number": "YT2663585803695488",
+    "shipments": [
+      {
+        "shipment_id": "10217-1",
+        "line_indexes": [
+          0,
+          1
+        ],
+        "carrier": "YunExpress",
+        "tracking_number": "YT2663585803695488",
+        "shipped_at": "2026-09-04T10:40:00Z",
+        "delivered_at": "2026-09-15T14:22:00Z",
+        "status": "delivered"
+      }
+    ],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10218",
+    "email": "aoife.byrne@example.net",
+    "customer_name": "Aoife Byrne",
+    "created_at": "2026-09-04T00:54:00Z",
+    "status": "delivered",
+    "items": [
+      {
+        "sku": "DRS-003",
+        "name": "Juniper Wrap Dress",
+        "size": "S",
+        "color": "Navy",
+        "qty": 1,
+        "unit_price": 98.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 98.0,
+    "shipping_fee": 12.95,
+    "total": 110.95,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Aoife Byrne",
+      "country": "IE",
+      "region": null,
+      "city": "Dublin",
+      "postal": "D06 X2K7",
+      "line1": "27 Rathgar Lane"
+    },
+    "shipping_method": "standard",
+    "shipped_at": "2026-09-06T10:40:00Z",
+    "delivered_at": "2026-09-18T14:22:00Z",
+    "carrier": "4PX",
+    "tracking_number": "4PX3003848149311CN",
+    "shipments": [
+      {
+        "shipment_id": "10218-1",
+        "line_indexes": [
+          0
+        ],
+        "carrier": "4PX",
+        "tracking_number": "4PX3003848149311CN",
+        "shipped_at": "2026-09-06T10:40:00Z",
+        "delivered_at": "2026-09-18T14:22:00Z",
+        "status": "delivered"
+      }
+    ],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10219",
+    "email": "stephanie.wu@example.com",
+    "customer_name": "Stephanie Wu",
+    "created_at": "2026-09-05T10:59:00Z",
+    "status": "delivered",
+    "items": [
+      {
+        "sku": "PNT-001",
+        "name": "Rowan Wide-Leg Trousers",
+        "size": "S",
+        "color": "Taupe",
+        "qty": 1,
+        "unit_price": 108.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 108.0,
+    "shipping_fee": 0.0,
+    "total": 108.0,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Stephanie Wu",
+      "country": "US",
+      "region": "WA",
+      "city": "Seattle",
+      "postal": "98115",
+      "line1": "7720 Ravenna Crest NE"
+    },
+    "shipping_method": "standard",
+    "shipped_at": "2026-09-08T10:40:00Z",
+    "delivered_at": "2026-09-19T14:22:00Z",
+    "carrier": "YunExpress",
+    "tracking_number": "YT2631370299604190",
+    "shipments": [
+      {
+        "shipment_id": "10219-1",
+        "line_indexes": [
+          0
+        ],
+        "carrier": "YunExpress",
+        "tracking_number": "YT2631370299604190",
+        "shipped_at": "2026-09-08T10:40:00Z",
+        "delivered_at": "2026-09-19T14:22:00Z",
+        "status": "delivered"
+      }
+    ],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10220",
+    "email": "grace.holloway@example.org",
+    "customer_name": "Grace Holloway",
+    "created_at": "2026-09-06T16:04:00Z",
+    "status": "delivered",
+    "items": [
+      {
+        "sku": "DRS-001",
+        "name": "Marlow Linen Midi Dress",
+        "size": "S",
+        "color": "Sage",
+        "qty": 1,
+        "unit_price": 128.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 128.0,
+    "shipping_fee": 0.0,
+    "total": 128.0,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Grace Holloway",
+      "country": "GB",
+      "region": null,
+      "city": "Bristol",
+      "postal": "BS6 5AJ",
+      "line1": "41 Cotham Rise"
+    },
+    "shipping_method": "standard",
+    "shipped_at": "2026-09-08T10:40:00Z",
+    "delivered_at": "2026-09-20T14:22:00Z",
+    "carrier": "YunExpress",
+    "tracking_number": "YT2685490681603503",
+    "shipments": [
+      {
+        "shipment_id": "10220-1",
+        "line_indexes": [
+          0
+        ],
+        "carrier": "YunExpress",
+        "tracking_number": "YT2685490681603503",
+        "shipped_at": "2026-09-08T10:40:00Z",
+        "delivered_at": "2026-09-20T14:22:00Z",
+        "status": "delivered"
+      }
+    ],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10221",
+    "email": "natalie.brennan@example.com",
+    "customer_name": "Natalie Brennan",
+    "created_at": "2026-09-07T15:58:00Z",
+    "status": "delivered",
+    "items": [
+      {
+        "sku": "KNT-001",
+        "name": "Hazel Cashmere Crewneck",
+        "size": "M",
+        "color": "Oatmeal",
+        "qty": 1,
+        "unit_price": 189.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 189.0,
+    "shipping_fee": 0.0,
+    "total": 189.0,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Natalie Brennan",
+      "country": "US",
+      "region": "MA",
+      "city": "Boston",
+      "postal": "02130",
+      "line1": "19 Pondview Terrace"
+    },
+    "shipping_method": "standard",
+    "shipped_at": "2026-09-09T10:40:00Z",
+    "delivered_at": "2026-09-21T14:22:00Z",
+    "carrier": "YunExpress",
+    "tracking_number": "YT2661520013710503",
+    "shipments": [
+      {
+        "shipment_id": "10221-1",
+        "line_indexes": [
+          0
+        ],
+        "carrier": "YunExpress",
+        "tracking_number": "YT2661520013710503",
+        "shipped_at": "2026-09-09T10:40:00Z",
+        "delivered_at": "2026-09-21T14:22:00Z",
+        "status": "delivered"
+      }
+    ],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10222",
+    "email": "alexis.turner@example.com",
+    "customer_name": "Alexis Turner",
+    "created_at": "2026-09-09T09:54:00Z",
+    "status": "delivered",
+    "items": [
+      {
+        "sku": "DRS-006",
+        "name": "Delphine Satin Midi Dress",
+        "size": "M",
+        "color": "Emerald",
+        "qty": 1,
+        "unit_price": 89.0,
+        "final_sale": true
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 89.0,
+    "shipping_fee": 8.95,
+    "total": 97.95,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Alexis Turner",
+      "country": "US",
+      "region": "TN",
+      "city": "Nashville",
+      "postal": "37206",
+      "line1": "1402 Fatherland Way"
+    },
+    "shipping_method": "standard",
+    "shipped_at": "2026-09-11T10:40:00Z",
+    "delivered_at": "2026-09-24T14:22:00Z",
+    "carrier": "YunExpress",
+    "tracking_number": "YT2610938029047670",
+    "shipments": [
+      {
+        "shipment_id": "10222-1",
+        "line_indexes": [
+          0
+        ],
+        "carrier": "YunExpress",
+        "tracking_number": "YT2610938029047670",
+        "shipped_at": "2026-09-11T10:40:00Z",
+        "delivered_at": "2026-09-24T14:22:00Z",
+        "status": "delivered"
+      }
+    ],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10223",
+    "email": "ines.laurent@example.net",
+    "customer_name": "Inès Laurent",
+    "created_at": "2026-09-11T09:24:00Z",
+    "status": "delivered",
+    "items": [
+      {
+        "sku": "SKT-003",
+        "name": "Celeste Satin Bias Skirt",
+        "size": "S",
+        "color": "Champagne",
+        "qty": 1,
+        "unit_price": 74.0,
+        "final_sale": false
+      },
+      {
+        "sku": "TOP-001",
+        "name": "Selene Silk Blouse",
+        "size": "S",
+        "color": "Black",
+        "qty": 1,
+        "unit_price": 118.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 192.0,
+    "shipping_fee": 0.0,
+    "total": 192.0,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Inès Laurent",
+      "country": "FR",
+      "region": null,
+      "city": "Paris",
+      "postal": "75011",
+      "line1": "48 rue Saint-Ambroisine"
+    },
+    "shipping_method": "standard",
+    "shipped_at": "2026-09-14T10:40:00Z",
+    "delivered_at": "2026-09-25T14:22:00Z",
+    "carrier": "4PX",
+    "tracking_number": "4PX3056698287370CN",
+    "shipments": [
+      {
+        "shipment_id": "10223-1",
+        "line_indexes": [
+          0,
+          1
+        ],
+        "carrier": "4PX",
+        "tracking_number": "4PX3056698287370CN",
+        "shipped_at": "2026-09-14T10:40:00Z",
+        "delivered_at": "2026-09-25T14:22:00Z",
+        "status": "delivered"
+      }
+    ],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10224",
+    "email": "lucia.romero@example.org",
+    "customer_name": "Lucía Romero",
+    "created_at": "2026-09-12T14:42:00Z",
+    "status": "delivered",
+    "items": [
+      {
+        "sku": "DRS-004",
+        "name": "Aster Tiered Maxi Dress",
+        "size": "M",
+        "color": "White",
+        "qty": 1,
+        "unit_price": 148.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 148.0,
+    "shipping_fee": 0.0,
+    "total": 148.0,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Lucía Romero",
+      "country": "ES",
+      "region": null,
+      "city": "Madrid",
+      "postal": "28015",
+      "line1": "Calle de Galileo Ruiz 33, 4º B"
+    },
+    "shipping_method": "standard",
+    "shipped_at": "2026-09-15T10:40:00Z",
+    "delivered_at": "2026-09-26T14:22:00Z",
+    "carrier": "4PX",
+    "tracking_number": "4PX3013264093089CN",
+    "shipments": [
+      {
+        "shipment_id": "10224-1",
+        "line_indexes": [
+          0
+        ],
+        "carrier": "4PX",
+        "tracking_number": "4PX3013264093089CN",
+        "shipped_at": "2026-09-15T10:40:00Z",
+        "delivered_at": "2026-09-26T14:22:00Z",
+        "status": "delivered"
+      }
+    ],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10225",
+    "email": "morgan.ellis@example.com",
+    "customer_name": "Morgan Ellis",
+    "created_at": "2026-09-14T13:15:00Z",
+    "status": "delivered",
+    "items": [
+      {
+        "sku": "PNT-003",
+        "name": "Sloane Straight Jeans",
+        "size": "27",
+        "color": "Vintage Blue",
+        "qty": 1,
+        "unit_price": 98.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 98.0,
+    "shipping_fee": 8.95,
+    "total": 106.95,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Morgan Ellis",
+      "country": "US",
+      "region": "MN",
+      "city": "Minneapolis",
+      "postal": "55408",
+      "line1": "3115 Bryant Lake Ave S"
+    },
+    "shipping_method": "standard",
+    "shipped_at": "2026-09-16T10:40:00Z",
+    "delivered_at": "2026-09-27T14:22:00Z",
+    "carrier": "YunExpress",
+    "tracking_number": "YT2661195251509450",
+    "shipments": [
+      {
+        "shipment_id": "10225-1",
+        "line_indexes": [
+          0
+        ],
+        "carrier": "YunExpress",
+        "tracking_number": "YT2661195251509450",
+        "shipped_at": "2026-09-16T10:40:00Z",
+        "delivered_at": "2026-09-27T14:22:00Z",
+        "status": "delivered"
+      }
+    ],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10226",
+    "email": "sophie.mercer@example.com",
+    "customer_name": "Sophie Mercer",
+    "created_at": "2026-09-15T10:41:00Z",
+    "status": "refund_pending",
+    "items": [
+      {
+        "sku": "KNT-003",
+        "name": "Lark Mohair Blend Sweater",
+        "size": "S",
+        "color": "Lilac",
+        "qty": 1,
+        "unit_price": 118.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 118.0,
+    "shipping_fee": 0.0,
+    "total": 118.0,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Sophie Mercer",
+      "country": "GB",
+      "region": null,
+      "city": "Leeds",
+      "postal": "LS6 2DU",
+      "line1": "9 Headingley Mount"
+    },
+    "shipping_method": "standard",
+    "shipped_at": "2026-09-17T10:40:00Z",
+    "delivered_at": "2026-09-29T14:22:00Z",
+    "carrier": "YunExpress",
+    "tracking_number": "YT2658813001167095",
+    "shipments": [
+      {
+        "shipment_id": "10226-1",
+        "line_indexes": [
+          0
+        ],
+        "carrier": "YunExpress",
+        "tracking_number": "YT2658813001167095",
+        "shipped_at": "2026-09-17T10:40:00Z",
+        "delivered_at": "2026-09-29T14:22:00Z",
+        "status": "delivered"
+      }
+    ],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": {
+      "rma_id": "RMA-10226",
+      "requested_at": "2026-10-02T15:02:00Z",
+      "line_indexes": [
+        0
+      ],
+      "return_label": "customer_arranged",
+      "label_fee_usd": 0.0,
+      "received_at": "2026-10-14T11:30:00Z",
+      "inspection_status": "in_review",
+      "refund_status": "pending",
+      "refund_amount_usd": null,
+      "refunded_at": null
+    },
+    "cancellation": null
+  },
+  {
+    "order_id": "10227",
+    "email": "jess.patel@example.com",
+    "customer_name": "Jessica Patel",
+    "created_at": "2026-09-17T15:52:00Z",
+    "status": "returned",
+    "items": [
+      {
+        "sku": "DRS-002",
+        "name": "Clementine Silk Slip Dress",
+        "size": "M",
+        "color": "Champagne",
+        "qty": 1,
+        "unit_price": 168.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 168.0,
+    "shipping_fee": 0.0,
+    "total": 168.0,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Jessica Patel",
+      "country": "US",
+      "region": "NJ",
+      "city": "Edison",
+      "postal": "08820",
+      "line1": "64 Oak Tree Commons"
+    },
+    "shipping_method": "standard",
+    "shipped_at": "2026-09-19T10:40:00Z",
+    "delivered_at": "2026-09-30T14:22:00Z",
+    "carrier": "YunExpress",
+    "tracking_number": "YT2621102783304336",
+    "shipments": [
+      {
+        "shipment_id": "10227-1",
+        "line_indexes": [
+          0
+        ],
+        "carrier": "YunExpress",
+        "tracking_number": "YT2621102783304336",
+        "shipped_at": "2026-09-19T10:40:00Z",
+        "delivered_at": "2026-09-30T14:22:00Z",
+        "status": "delivered"
+      }
+    ],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": {
+      "rma_id": "RMA-10227",
+      "requested_at": "2026-10-01T15:02:00Z",
+      "line_indexes": [
+        0
+      ],
+      "return_label": "prepaid_us",
+      "label_fee_usd": 7.95,
+      "received_at": "2026-10-08T11:30:00Z",
+      "inspection_status": "passed",
+      "refund_status": "refunded",
+      "refund_amount_usd": 160.05,
+      "refunded_at": "2026-10-10T09:15:00Z"
+    },
+    "cancellation": null
+  },
+  {
+    "order_id": "10228",
+    "email": "olivia.hart@example.com",
+    "customer_name": "Olivia Hart",
+    "created_at": "2026-09-19T20:34:00Z",
+    "status": "delivered",
+    "items": [
+      {
+        "sku": "DRS-003",
+        "name": "Juniper Wrap Dress",
+        "size": "M",
+        "color": "Forest",
+        "qty": 1,
+        "unit_price": 98.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 98.0,
+    "shipping_fee": 8.95,
+    "total": 106.95,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Olivia Hart",
+      "country": "US",
+      "region": "OH",
+      "city": "Columbus",
+      "postal": "43215",
+      "line1": "781 Linden Park Ave"
+    },
+    "shipping_method": "standard",
+    "shipped_at": "2026-09-21T10:40:00Z",
+    "delivered_at": "2026-10-01T14:22:00Z",
+    "carrier": "YunExpress",
+    "tracking_number": "YT2653223966770570",
+    "shipments": [
+      {
+        "shipment_id": "10228-1",
+        "line_indexes": [
+          0
+        ],
+        "carrier": "YunExpress",
+        "tracking_number": "YT2653223966770570",
+        "shipped_at": "2026-09-21T10:40:00Z",
+        "delivered_at": "2026-10-01T14:22:00Z",
+        "status": "delivered"
+      }
+    ],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10229",
+    "email": "chloe.tremblay@example.net",
+    "customer_name": "Chloé Tremblay",
+    "created_at": "2026-09-20T00:43:00Z",
+    "status": "delivered",
+    "items": [
+      {
+        "sku": "OUT-002",
+        "name": "Quinn Trench Coat",
+        "size": "S",
+        "color": "Stone",
+        "qty": 1,
+        "unit_price": 176.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 176.0,
+    "shipping_fee": 0.0,
+    "total": 176.0,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Chloé Tremblay",
+      "country": "CA",
+      "region": "QC",
+      "city": "Montréal",
+      "postal": "H2T 1S6",
+      "line1": "5320 rue Clark-Bellemare"
+    },
+    "shipping_method": "standard",
+    "shipped_at": "2026-09-22T10:40:00Z",
+    "delivered_at": "2026-10-06T14:22:00Z",
+    "carrier": "YunExpress",
+    "tracking_number": "YT2684995034993981",
+    "shipments": [
+      {
+        "shipment_id": "10229-1",
+        "line_indexes": [
+          0
+        ],
+        "carrier": "YunExpress",
+        "tracking_number": "YT2684995034993981",
+        "shipped_at": "2026-09-22T10:40:00Z",
+        "delivered_at": "2026-10-06T14:22:00Z",
+        "status": "delivered"
+      }
+    ],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10230",
+    "email": "jana.becker@example.org",
+    "customer_name": "Jana Becker",
+    "created_at": "2026-09-22T13:51:00Z",
+    "status": "delivered",
+    "items": [
+      {
+        "sku": "PNT-004",
+        "name": "Tilda Pleated Culottes",
+        "size": "S",
+        "color": "Black",
+        "qty": 1,
+        "unit_price": 79.0,
+        "final_sale": false
+      },
+      {
+        "sku": "TOP-003",
+        "name": "Bea Ribbed Tank",
+        "size": "S",
+        "color": "Mocha",
+        "qty": 1,
+        "unit_price": 42.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 121.0,
+    "shipping_fee": 0.0,
+    "total": 121.0,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Jana Becker",
+      "country": "DE",
+      "region": null,
+      "city": "München",
+      "postal": "80469",
+      "line1": "Fraunhoferweg 15"
+    },
+    "shipping_method": "standard",
+    "shipped_at": "2026-09-24T10:40:00Z",
+    "delivered_at": "2026-10-03T14:22:00Z",
+    "carrier": "4PX",
+    "tracking_number": "4PX3008840081660CN",
+    "shipments": [
+      {
+        "shipment_id": "10230-1",
+        "line_indexes": [
+          0,
+          1
+        ],
+        "carrier": "4PX",
+        "tracking_number": "4PX3008840081660CN",
+        "shipped_at": "2026-09-24T10:40:00Z",
+        "delivered_at": "2026-10-03T14:22:00Z",
+        "status": "delivered"
+      }
+    ],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10231",
+    "email": "jane.whitfield@example.com",
+    "customer_name": "Jane Whitfield",
+    "created_at": "2026-09-24T09:06:00Z",
+    "status": "delivered",
+    "items": [
+      {
+        "sku": "DRS-001",
+        "name": "Marlow Linen Midi Dress",
+        "size": "M",
+        "color": "Black",
+        "qty": 1,
+        "unit_price": 128.0,
+        "final_sale": false
+      },
+      {
+        "sku": "ACC-002",
+        "name": "Linden Leather Belt",
+        "size": "M/L",
+        "color": "Tan",
+        "qty": 1,
+        "unit_price": 52.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 180.0,
+    "shipping_fee": 0.0,
+    "total": 180.0,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Jane Whitfield",
+      "country": "US",
+      "region": "NC",
+      "city": "Raleigh",
+      "postal": "27608",
+      "line1": "2809 Glenwood Hollow"
+    },
+    "shipping_method": "standard",
+    "shipped_at": "2026-09-26T10:40:00Z",
+    "delivered_at": "2026-10-06T14:22:00Z",
+    "carrier": "YunExpress",
+    "tracking_number": "YT2651082265786119",
+    "shipments": [
+      {
+        "shipment_id": "10231-1",
+        "line_indexes": [
+          0,
+          1
+        ],
+        "carrier": "YunExpress",
+        "tracking_number": "YT2651082265786119",
+        "shipped_at": "2026-09-26T10:40:00Z",
+        "delivered_at": "2026-10-06T14:22:00Z",
+        "status": "delivered"
+      }
+    ],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10232",
+    "email": "ruby.nguyen@example.com",
+    "customer_name": "Ruby Nguyen",
+    "created_at": "2026-09-25T17:41:00Z",
+    "status": "delivered",
+    "items": [
+      {
+        "sku": "KNT-002",
+        "name": "Bram Cable Cardigan",
+        "size": "M",
+        "color": "Moss",
+        "qty": 1,
+        "unit_price": 128.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 128.0,
+    "shipping_fee": 0.0,
+    "total": 128.0,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Ruby Nguyen",
+      "country": "AU",
+      "region": "NSW",
+      "city": "Sydney",
+      "postal": "2042",
+      "line1": "5/31 Enmore Parade"
+    },
+    "shipping_method": "standard",
+    "shipped_at": "2026-09-27T10:40:00Z",
+    "delivered_at": "2026-10-10T14:22:00Z",
+    "carrier": "YunExpress",
+    "tracking_number": "YT2656391895475780",
+    "shipments": [
+      {
+        "shipment_id": "10232-1",
+        "line_indexes": [
+          0
+        ],
+        "carrier": "YunExpress",
+        "tracking_number": "YT2656391895475780",
+        "shipped_at": "2026-09-27T10:40:00Z",
+        "delivered_at": "2026-10-10T14:22:00Z",
+        "status": "delivered"
+      }
+    ],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10233",
+    "email": "sam.cole@example.com",
+    "customer_name": "Samantha Cole",
+    "created_at": "2026-09-26T14:47:00Z",
+    "status": "delivered",
+    "items": [
+      {
+        "sku": "SKT-004",
+        "name": "Fern Wool Mini Skirt",
+        "size": "S",
+        "color": "Berry",
+        "qty": 1,
+        "unit_price": 69.0,
+        "final_sale": true
+      },
+      {
+        "sku": "TOP-001",
+        "name": "Selene Silk Blouse",
+        "size": "S",
+        "color": "Ivory",
+        "qty": 1,
+        "unit_price": 118.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": "WELCOME10",
+    "discount_amount": 11.8,
+    "subtotal": 187.0,
+    "shipping_fee": 0.0,
+    "total": 175.2,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Samantha Cole",
+      "country": "US",
+      "region": "NC",
+      "city": "Charlotte",
+      "postal": "28203",
+      "line1": "1720 Dilworth Crescent"
+    },
+    "shipping_method": "standard",
+    "shipped_at": "2026-09-29T10:40:00Z",
+    "delivered_at": "2026-10-08T14:22:00Z",
+    "carrier": "YunExpress",
+    "tracking_number": "YT2641680027040880",
+    "shipments": [
+      {
+        "shipment_id": "10233-1",
+        "line_indexes": [
+          0,
+          1
+        ],
+        "carrier": "YunExpress",
+        "tracking_number": "YT2641680027040880",
+        "shipped_at": "2026-09-29T10:40:00Z",
+        "delivered_at": "2026-10-08T14:22:00Z",
+        "status": "delivered"
+      }
+    ],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10234",
+    "email": "holly.atkinson@example.net",
+    "customer_name": "Holly Atkinson",
+    "created_at": "2026-09-28T08:11:00Z",
+    "status": "delivered",
+    "items": [
+      {
+        "sku": "DRS-005",
+        "name": "Wren Knit Sweater Dress",
+        "size": "S",
+        "color": "Charcoal",
+        "qty": 1,
+        "unit_price": 136.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 136.0,
+    "shipping_fee": 29.95,
+    "total": 165.95,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Holly Atkinson",
+      "country": "GB",
+      "region": null,
+      "city": "Glasgow",
+      "postal": "G12 8QQ",
+      "line1": "3/2 14 Kelvinside Gardens"
+    },
+    "shipping_method": "express",
+    "shipped_at": "2026-09-29T10:40:00Z",
+    "delivered_at": "2026-10-03T14:22:00Z",
+    "carrier": "DHL Express",
+    "tracking_number": "0849507164",
+    "shipments": [
+      {
+        "shipment_id": "10234-1",
+        "line_indexes": [
+          0
+        ],
+        "carrier": "DHL Express",
+        "tracking_number": "0849507164",
+        "shipped_at": "2026-09-29T10:40:00Z",
+        "delivered_at": "2026-10-03T14:22:00Z",
+        "status": "delivered"
+      }
+    ],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10235",
+    "email": "emily.sandoval@example.com",
+    "customer_name": "Emily Sandoval",
+    "created_at": "2026-09-29T06:39:00Z",
+    "status": "refund_pending",
+    "items": [
+      {
+        "sku": "PNT-002",
+        "name": "Ivy Linen Drawstring Pants",
+        "size": "M",
+        "color": "Black",
+        "qty": 1,
+        "unit_price": 84.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 84.0,
+    "shipping_fee": 8.95,
+    "total": 92.95,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Emily Sandoval",
+      "country": "US",
+      "region": "NM",
+      "city": "Albuquerque",
+      "postal": "87106",
+      "line1": "2405 Mesa Arroyo Rd SE"
+    },
+    "shipping_method": "standard",
+    "shipped_at": "2026-10-01T10:40:00Z",
+    "delivered_at": "2026-10-10T14:22:00Z",
+    "carrier": "YunExpress",
+    "tracking_number": "YT2695846756876311",
+    "shipments": [
+      {
+        "shipment_id": "10235-1",
+        "line_indexes": [
+          0
+        ],
+        "carrier": "YunExpress",
+        "tracking_number": "YT2695846756876311",
+        "shipped_at": "2026-10-01T10:40:00Z",
+        "delivered_at": "2026-10-10T14:22:00Z",
+        "status": "delivered"
+      }
+    ],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": {
+      "rma_id": "RMA-10235",
+      "requested_at": "2026-10-12T15:02:00Z",
+      "line_indexes": [
+        0
+      ],
+      "return_label": "prepaid_us",
+      "label_fee_usd": 7.95,
+      "received_at": null,
+      "inspection_status": "awaiting_parcel",
+      "refund_status": "pending",
+      "refund_amount_usd": null,
+      "refunded_at": null
+    },
+    "cancellation": null
+  },
+  {
+    "order_id": "10236",
+    "email": "ashley.romano@example.com",
+    "customer_name": "Ashley Romano",
+    "created_at": "2026-10-01T19:52:00Z",
+    "status": "delivered",
+    "items": [
+      {
+        "sku": "DRS-007",
+        "name": "Ottilie Shirt Dress",
+        "size": "S",
+        "color": "Blue Stripe",
+        "qty": 1,
+        "unit_price": 112.0,
+        "final_sale": false
+      },
+      {
+        "sku": "PNT-002",
+        "name": "Ivy Linen Drawstring Pants",
+        "size": "S",
+        "color": "Black",
+        "qty": 1,
+        "unit_price": 84.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 196.0,
+    "shipping_fee": 0.0,
+    "total": 196.0,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Ashley Romano",
+      "country": "US",
+      "region": "PA",
+      "city": "Philadelphia",
+      "postal": "19147",
+      "line1": "918 Catharine Court"
+    },
+    "shipping_method": "standard",
+    "shipped_at": "2026-10-05T10:40:00Z",
+    "delivered_at": "2026-10-16T14:22:00Z",
+    "carrier": "YunExpress",
+    "tracking_number": "YT2671112902216254",
+    "shipments": [
+      {
+        "shipment_id": "10236-1",
+        "line_indexes": [
+          0,
+          1
+        ],
+        "carrier": "YunExpress",
+        "tracking_number": "YT2671112902216254",
+        "shipped_at": "2026-10-05T10:40:00Z",
+        "delivered_at": "2026-10-16T14:22:00Z",
+        "status": "delivered"
+      }
+    ],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10237",
+    "email": "manon.petit@example.org",
+    "customer_name": "Manon Petit",
+    "created_at": "2026-10-02T11:12:00Z",
+    "status": "cancelled",
+    "items": [
+      {
+        "sku": "DRS-003",
+        "name": "Juniper Wrap Dress",
+        "size": "S",
+        "color": "Navy",
+        "qty": 1,
+        "unit_price": 98.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 98.0,
+    "shipping_fee": 12.95,
+    "total": 110.95,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Manon Petit",
+      "country": "FR",
+      "region": null,
+      "city": "Bordeaux",
+      "postal": "33000",
+      "line1": "7 cours de l'Intendance Ouest"
+    },
+    "shipping_method": "standard",
+    "shipped_at": null,
+    "delivered_at": null,
+    "carrier": null,
+    "tracking_number": null,
+    "shipments": [],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": {
+      "cancelled_at": "2026-10-03T10:05:00Z",
+      "reason": "customer_request",
+      "refund_status": "refunded",
+      "refund_amount_usd": 110.95
+    }
+  },
+  {
+    "order_id": "10238",
+    "email": "avery.campbell@example.com",
+    "customer_name": "Avery Campbell",
+    "created_at": "2026-10-03T20:44:00Z",
+    "status": "exception",
+    "items": [
+      {
+        "sku": "OUT-001",
+        "name": "Arden Wool Coat",
+        "size": "M",
+        "color": "Camel",
+        "qty": 1,
+        "unit_price": 198.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 198.0,
+    "shipping_fee": 0.0,
+    "total": 198.0,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Avery Campbell",
+      "country": "CA",
+      "region": "BC",
+      "city": "Vancouver",
+      "postal": "V5T 2K9",
+      "line1": "2241 Quebec Lane"
+    },
+    "shipping_method": "standard",
+    "shipped_at": "2026-10-05T10:40:00Z",
+    "delivered_at": null,
+    "carrier": "YunExpress",
+    "tracking_number": "YT2655537622543883",
+    "shipments": [
+      {
+        "shipment_id": "10238-1",
+        "line_indexes": [
+          0
+        ],
+        "carrier": "YunExpress",
+        "tracking_number": "YT2655537622543883",
+        "shipped_at": "2026-10-05T10:40:00Z",
+        "delivered_at": null,
+        "status": "exception"
+      }
+    ],
+    "fulfillment_note": null,
+    "exception": {
+      "type": "customs_hold",
+      "since": "2026-10-12",
+      "note": "Carrier holding parcel at customs pending payment of import duties/taxes by recipient."
+    },
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10239",
+    "email": "freya.whitmore@example.com",
+    "customer_name": "Freya Whitmore",
+    "created_at": "2026-10-04T19:48:00Z",
+    "status": "exception",
+    "items": [
+      {
+        "sku": "SKT-001",
+        "name": "Paloma Pleated Midi Skirt",
+        "size": "M",
+        "color": "Camel",
+        "qty": 1,
+        "unit_price": 88.0,
+        "final_sale": false
+      },
+      {
+        "sku": "TOP-002",
+        "name": "Hollis Linen Shirt",
+        "size": "M",
+        "color": "White",
+        "qty": 1,
+        "unit_price": 78.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 166.0,
+    "shipping_fee": 0.0,
+    "total": 166.0,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Freya Whitmore",
+      "country": "GB",
+      "region": null,
+      "city": "London",
+      "postal": "NW3 4QE",
+      "line1": "Flat, 22 Haverstock Mews"
+    },
+    "shipping_method": "standard",
+    "shipped_at": "2026-10-06T10:40:00Z",
+    "delivered_at": null,
+    "carrier": "YunExpress",
+    "tracking_number": "YT2616215863232630",
+    "shipments": [
+      {
+        "shipment_id": "10239-1",
+        "line_indexes": [
+          0,
+          1
+        ],
+        "carrier": "YunExpress",
+        "tracking_number": "YT2616215863232630",
+        "shipped_at": "2026-10-06T10:40:00Z",
+        "delivered_at": null,
+        "status": "exception"
+      }
+    ],
+    "fulfillment_note": null,
+    "exception": {
+      "type": "address_issue",
+      "since": "2026-10-15",
+      "note": "Carrier could not deliver: address line missing flat/unit number. Held at local depot."
+    },
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10240",
+    "email": "isla.fraser@example.net",
+    "customer_name": "Isla Fraser",
+    "created_at": "2026-10-05T23:07:00Z",
+    "status": "exception",
+    "items": [
+      {
+        "sku": "DRS-002",
+        "name": "Clementine Silk Slip Dress",
+        "size": "S",
+        "color": "Champagne",
+        "qty": 1,
+        "unit_price": 168.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 168.0,
+    "shipping_fee": 0.0,
+    "total": 168.0,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Isla Fraser",
+      "country": "AU",
+      "region": "QLD",
+      "city": "Brisbane",
+      "postal": "4101",
+      "line1": "22 Boundary Gully St"
+    },
+    "shipping_method": "standard",
+    "shipped_at": "2026-10-07T10:40:00Z",
+    "delivered_at": null,
+    "carrier": "YunExpress",
+    "tracking_number": "YT2602310783525075",
+    "shipments": [
+      {
+        "shipment_id": "10240-1",
+        "line_indexes": [
+          0
+        ],
+        "carrier": "YunExpress",
+        "tracking_number": "YT2602310783525075",
+        "shipped_at": "2026-10-07T10:40:00Z",
+        "delivered_at": null,
+        "status": "in_transit"
+      }
+    ],
+    "fulfillment_note": null,
+    "exception": {
+      "type": "no_tracking_update",
+      "since": "2026-10-09",
+      "note": "No carrier scan since departure from Hong Kong hub."
+    },
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10241",
+    "email": "lauren.fisher@example.com",
+    "customer_name": "Lauren Fisher",
+    "created_at": "2026-10-08T18:32:00Z",
+    "status": "delivered",
+    "items": [
+      {
+        "sku": "DRS-004",
+        "name": "Aster Tiered Maxi Dress",
+        "size": "S",
+        "color": "Indigo",
+        "qty": 1,
+        "unit_price": 148.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 148.0,
+    "shipping_fee": 0.0,
+    "total": 148.0,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Lauren Fisher",
+      "country": "US",
+      "region": "CO",
+      "city": "Denver",
+      "postal": "80206",
+      "line1": "915 Clarkson Bend"
+    },
+    "shipping_method": "standard",
+    "shipped_at": "2026-10-10T10:40:00Z",
+    "delivered_at": "2026-10-19T14:22:00Z",
+    "carrier": "YunExpress",
+    "tracking_number": "YT2685280751185548",
+    "shipments": [
+      {
+        "shipment_id": "10241-1",
+        "line_indexes": [
+          0
+        ],
+        "carrier": "YunExpress",
+        "tracking_number": "YT2685280751185548",
+        "shipped_at": "2026-10-10T10:40:00Z",
+        "delivered_at": "2026-10-19T14:22:00Z",
+        "status": "delivered"
+      }
+    ],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10242",
+    "email": "nicole.barrett@example.com",
+    "customer_name": "Nicole Barrett",
+    "created_at": "2026-10-09T22:15:00Z",
+    "status": "delivered",
+    "items": [
+      {
+        "sku": "TOP-001",
+        "name": "Selene Silk Blouse",
+        "size": "L",
+        "color": "Dusty Rose",
+        "qty": 1,
+        "unit_price": 118.0,
+        "final_sale": false
+      },
+      {
+        "sku": "SKT-001",
+        "name": "Paloma Pleated Midi Skirt",
+        "size": "L",
+        "color": "Black",
+        "qty": 1,
+        "unit_price": 88.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": "AUTUMN15",
+    "discount_amount": 30.9,
+    "subtotal": 206.0,
+    "shipping_fee": 0.0,
+    "total": 175.1,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Nicole Barrett",
+      "country": "US",
+      "region": "FL",
+      "city": "Tampa",
+      "postal": "33606",
+      "line1": "413 S Packwood Isle"
+    },
+    "shipping_method": "standard",
+    "shipped_at": "2026-10-11T10:40:00Z",
+    "delivered_at": "2026-10-18T14:22:00Z",
+    "carrier": "YunExpress",
+    "tracking_number": "YT2620775575481936",
+    "shipments": [
+      {
+        "shipment_id": "10242-1",
+        "line_indexes": [
+          0,
+          1
+        ],
+        "carrier": "YunExpress",
+        "tracking_number": "YT2620775575481936",
+        "shipped_at": "2026-10-11T10:40:00Z",
+        "delivered_at": "2026-10-18T14:22:00Z",
+        "status": "delivered"
+      }
+    ],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10243",
+    "email": "lucia.romero@example.org",
+    "customer_name": "Lucía Romero",
+    "created_at": "2026-10-10T04:43:00Z",
+    "status": "shipped",
+    "items": [
+      {
+        "sku": "KNT-003",
+        "name": "Lark Mohair Blend Sweater",
+        "size": "M",
+        "color": "Ivory",
+        "qty": 1,
+        "unit_price": 118.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 118.0,
+    "shipping_fee": 0.0,
+    "total": 118.0,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Lucía Romero",
+      "country": "ES",
+      "region": null,
+      "city": "Madrid",
+      "postal": "28015",
+      "line1": "Calle de Galileo Ruiz 33, 4º B"
+    },
+    "shipping_method": "standard",
+    "shipped_at": "2026-10-13T10:40:00Z",
+    "delivered_at": null,
+    "carrier": "4PX",
+    "tracking_number": "4PX3073064907698CN",
+    "shipments": [
+      {
+        "shipment_id": "10243-1",
+        "line_indexes": [
+          0
+        ],
+        "carrier": "4PX",
+        "tracking_number": "4PX3073064907698CN",
+        "shipped_at": "2026-10-13T10:40:00Z",
+        "delivered_at": null,
+        "status": "in_transit"
+      }
+    ],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10244",
+    "email": "mareike.schneider@example.net",
+    "customer_name": "Mareike Schneider",
+    "created_at": "2026-10-11T06:14:00Z",
+    "status": "shipped",
+    "items": [
+      {
+        "sku": "DRS-005",
+        "name": "Wren Knit Sweater Dress",
+        "size": "M",
+        "color": "Oatmeal",
+        "qty": 1,
+        "unit_price": 136.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 136.0,
+    "shipping_fee": 0.0,
+    "total": 136.0,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Mareike Schneider",
+      "country": "DE",
+      "region": null,
+      "city": "Köln",
+      "postal": "50672",
+      "line1": "Brüsseler Hof 8"
+    },
+    "shipping_method": "standard",
+    "shipped_at": "2026-10-14T10:40:00Z",
+    "delivered_at": null,
+    "carrier": "4PX",
+    "tracking_number": "4PX3096065841650CN",
+    "shipments": [
+      {
+        "shipment_id": "10244-1",
+        "line_indexes": [
+          0
+        ],
+        "carrier": "4PX",
+        "tracking_number": "4PX3096065841650CN",
+        "shipped_at": "2026-10-14T10:40:00Z",
+        "delivered_at": null,
+        "status": "in_transit"
+      }
+    ],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10245",
+    "email": "kim.hayes@example.com",
+    "customer_name": "Kimberly Hayes",
+    "created_at": "2026-10-12T12:57:00Z",
+    "status": "shipped",
+    "items": [
+      {
+        "sku": "PNT-003",
+        "name": "Sloane Straight Jeans",
+        "size": "28",
+        "color": "Black",
+        "qty": 1,
+        "unit_price": 98.0,
+        "final_sale": false
+      },
+      {
+        "sku": "TOP-003",
+        "name": "Bea Ribbed Tank",
+        "size": "M",
+        "color": "Black",
+        "qty": 1,
+        "unit_price": 42.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 140.0,
+    "shipping_fee": 0.0,
+    "total": 140.0,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Kimberly Hayes",
+      "country": "US",
+      "region": "CA",
+      "city": "Sacramento",
+      "postal": "95816",
+      "line1": "2631 McKinley Grove"
+    },
+    "shipping_method": "standard",
+    "shipped_at": "2026-10-14T10:40:00Z",
+    "delivered_at": null,
+    "carrier": "YunExpress",
+    "tracking_number": "YT2681552315300820",
+    "shipments": [
+      {
+        "shipment_id": "10245-1",
+        "line_indexes": [
+          0,
+          1
+        ],
+        "carrier": "YunExpress",
+        "tracking_number": "YT2681552315300820",
+        "shipped_at": "2026-10-14T10:40:00Z",
+        "delivered_at": null,
+        "status": "in_transit"
+      }
+    ],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10246",
+    "email": "giulia.marchetti@example.org",
+    "customer_name": "Giulia Marchetti",
+    "created_at": "2026-10-13T02:28:00Z",
+    "status": "shipped",
+    "items": [
+      {
+        "sku": "DRS-002",
+        "name": "Clementine Silk Slip Dress",
+        "size": "S",
+        "color": "Ink",
+        "qty": 1,
+        "unit_price": 168.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 168.0,
+    "shipping_fee": 0.0,
+    "total": 168.0,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Giulia Marchetti",
+      "country": "IT",
+      "region": null,
+      "city": "Milano",
+      "postal": "20144",
+      "line1": "Via Solari Nuova 26"
+    },
+    "shipping_method": "standard",
+    "shipped_at": "2026-10-15T10:40:00Z",
+    "delivered_at": null,
+    "carrier": "4PX",
+    "tracking_number": "4PX3029157627608CN",
+    "shipments": [
+      {
+        "shipment_id": "10246-1",
+        "line_indexes": [
+          0
+        ],
+        "carrier": "4PX",
+        "tracking_number": "4PX3029157627608CN",
+        "shipped_at": "2026-10-15T10:40:00Z",
+        "delivered_at": null,
+        "status": "in_transit"
+      }
+    ],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10247",
+    "email": "rebecca.lin@example.com",
+    "customer_name": "Rebecca Lin",
+    "created_at": "2026-10-13T03:09:00Z",
+    "status": "shipped",
+    "items": [
+      {
+        "sku": "DRS-001",
+        "name": "Marlow Linen Midi Dress",
+        "size": "S",
+        "color": "Sand",
+        "qty": 1,
+        "unit_price": 128.0,
+        "final_sale": false
+      },
+      {
+        "sku": "KNT-001",
+        "name": "Hazel Cashmere Crewneck",
+        "size": "S",
+        "color": "Black",
+        "qty": 1,
+        "unit_price": 189.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 317.0,
+    "shipping_fee": 19.95,
+    "total": 336.95,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Rebecca Lin",
+      "country": "US",
+      "region": "CA",
+      "city": "San Jose",
+      "postal": "95126",
+      "line1": "1590 Lincoln Orchard Ct"
+    },
+    "shipping_method": "express",
+    "shipped_at": "2026-10-15T10:40:00Z",
+    "delivered_at": null,
+    "carrier": "DHL Express",
+    "tracking_number": "2449959816",
+    "shipments": [
+      {
+        "shipment_id": "10247-1",
+        "line_indexes": [
+          0
+        ],
+        "carrier": "DHL Express",
+        "tracking_number": "2449959816",
+        "shipped_at": "2026-10-15T10:40:00Z",
+        "delivered_at": "2026-10-19T14:22:00Z",
+        "status": "delivered"
+      }
+    ],
+    "fulfillment_note": "Line 2 (KNT-001 S Black) backordered. Supplier restock estimate 2026-10-28 (internal estimate, not confirmed).",
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10248",
+    "email": "melissa.grant@example.com",
+    "customer_name": "Melissa Grant",
+    "created_at": "2026-10-14T18:18:00Z",
+    "status": "shipped",
+    "items": [
+      {
+        "sku": "DRS-004",
+        "name": "Aster Tiered Maxi Dress",
+        "size": "M",
+        "color": "White",
+        "qty": 1,
+        "unit_price": 148.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 148.0,
+    "shipping_fee": 0.0,
+    "total": 148.0,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Melissa Grant",
+      "country": "US",
+      "region": "MO",
+      "city": "Kansas City",
+      "postal": "64111",
+      "line1": "4019 Wornall Ridge"
+    },
+    "shipping_method": "standard",
+    "shipped_at": "2026-10-16T10:40:00Z",
+    "delivered_at": null,
+    "carrier": "YunExpress",
+    "tracking_number": "YT2690926706364906",
+    "shipments": [
+      {
+        "shipment_id": "10248-1",
+        "line_indexes": [
+          0
+        ],
+        "carrier": "YunExpress",
+        "tracking_number": "YT2690926706364906",
+        "shipped_at": "2026-10-16T10:40:00Z",
+        "delivered_at": null,
+        "status": "in_transit"
+      }
+    ],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10249",
+    "email": "charlotte.evans@example.net",
+    "customer_name": "Charlotte Evans",
+    "created_at": "2026-10-14T18:59:00Z",
+    "status": "shipped",
+    "items": [
+      {
+        "sku": "TOP-004",
+        "name": "Margo Puff Sleeve Top",
+        "size": "S",
+        "color": "White",
+        "qty": 1,
+        "unit_price": 76.0,
+        "final_sale": false
+      },
+      {
+        "sku": "PNT-004",
+        "name": "Tilda Pleated Culottes",
+        "size": "S",
+        "color": "Sage",
+        "qty": 1,
+        "unit_price": 79.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": "AUTUMN15",
+    "discount_amount": 23.25,
+    "subtotal": 155.0,
+    "shipping_fee": 0.0,
+    "total": 131.75,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Charlotte Evans",
+      "country": "GB",
+      "region": null,
+      "city": "Cardiff",
+      "postal": "CF24 4HF",
+      "line1": "58 Roath Terrace"
+    },
+    "shipping_method": "standard",
+    "shipped_at": "2026-10-16T10:40:00Z",
+    "delivered_at": null,
+    "carrier": "YunExpress",
+    "tracking_number": "YT2664781647500814",
+    "shipments": [
+      {
+        "shipment_id": "10249-1",
+        "line_indexes": [
+          0,
+          1
+        ],
+        "carrier": "YunExpress",
+        "tracking_number": "YT2664781647500814",
+        "shipped_at": "2026-10-16T10:40:00Z",
+        "delivered_at": null,
+        "status": "in_transit"
+      }
+    ],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10250",
+    "email": "amanda.ruiz@example.com",
+    "customer_name": "Amanda Ruiz",
+    "created_at": "2026-10-15T02:20:00Z",
+    "status": "shipped",
+    "items": [
+      {
+        "sku": "KNT-004",
+        "name": "Nora Knit Polo",
+        "size": "S",
+        "color": "Ecru",
+        "qty": 1,
+        "unit_price": 72.0,
+        "final_sale": false
+      },
+      {
+        "sku": "ACC-003",
+        "name": "Maren Woven Tote",
+        "size": "OS",
+        "color": "Natural",
+        "qty": 1,
+        "unit_price": 68.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 140.0,
+    "shipping_fee": 0.0,
+    "total": 140.0,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Amanda Ruiz",
+      "country": "US",
+      "region": "TX",
+      "city": "Houston",
+      "postal": "77019",
+      "line1": "2115 Westheimer Pines"
+    },
+    "shipping_method": "standard",
+    "shipped_at": "2026-10-17T10:40:00Z",
+    "delivered_at": null,
+    "carrier": "YunExpress",
+    "tracking_number": "YT2689410666907460",
+    "shipments": [
+      {
+        "shipment_id": "10250-1",
+        "line_indexes": [
+          0,
+          1
+        ],
+        "carrier": "YunExpress",
+        "tracking_number": "YT2689410666907460",
+        "shipped_at": "2026-10-17T10:40:00Z",
+        "delivered_at": null,
+        "status": "in_transit"
+      }
+    ],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10251",
+    "email": "olivia.hart@example.com",
+    "customer_name": "Olivia Hart",
+    "created_at": "2026-10-15T16:39:00Z",
+    "status": "shipped",
+    "items": [
+      {
+        "sku": "OUT-002",
+        "name": "Quinn Trench Coat",
+        "size": "M",
+        "color": "Navy",
+        "qty": 1,
+        "unit_price": 176.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 176.0,
+    "shipping_fee": 0.0,
+    "total": 176.0,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Olivia Hart",
+      "country": "US",
+      "region": "OH",
+      "city": "Columbus",
+      "postal": "43215",
+      "line1": "781 Linden Park Ave"
+    },
+    "shipping_method": "standard",
+    "shipped_at": "2026-10-17T10:40:00Z",
+    "delivered_at": null,
+    "carrier": "YunExpress",
+    "tracking_number": "YT2617797637579311",
+    "shipments": [
+      {
+        "shipment_id": "10251-1",
+        "line_indexes": [
+          0
+        ],
+        "carrier": "YunExpress",
+        "tracking_number": "YT2617797637579311",
+        "shipped_at": "2026-10-17T10:40:00Z",
+        "delivered_at": null,
+        "status": "in_transit"
+      }
+    ],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10252",
+    "email": "lea.moreau@example.com",
+    "customer_name": "Léa Moreau",
+    "created_at": "2026-10-16T05:20:00Z",
+    "status": "processing",
+    "items": [
+      {
+        "sku": "DRS-001",
+        "name": "Marlow Linen Midi Dress",
+        "size": "S",
+        "color": "Black",
+        "qty": 1,
+        "unit_price": 128.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 128.0,
+    "shipping_fee": 0.0,
+    "total": 128.0,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Léa Moreau",
+      "country": "FR",
+      "region": null,
+      "city": "Toulouse",
+      "postal": "31000",
+      "line1": "3 rue des Filatiers-Hautes"
+    },
+    "shipping_method": "standard",
+    "shipped_at": null,
+    "delivered_at": null,
+    "carrier": null,
+    "tracking_number": null,
+    "shipments": [],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10253",
+    "email": "courtney.dunn@example.com",
+    "customer_name": "Courtney Dunn",
+    "created_at": "2026-10-17T17:05:00Z",
+    "status": "processing",
+    "items": [
+      {
+        "sku": "TOP-004",
+        "name": "Margo Puff Sleeve Top",
+        "size": "M",
+        "color": "Butter",
+        "qty": 1,
+        "unit_price": 64.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 64.0,
+    "shipping_fee": 8.95,
+    "total": 72.95,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Courtney Dunn",
+      "country": "US",
+      "region": "KY",
+      "city": "Louisville",
+      "postal": "40204",
+      "line1": "1307 Cherokee Bend"
+    },
+    "shipping_method": "standard",
+    "shipped_at": null,
+    "delivered_at": null,
+    "carrier": null,
+    "tracking_number": null,
+    "shipments": [],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10254",
+    "email": "maya.singh@example.net",
+    "customer_name": "Maya Singh",
+    "created_at": "2026-10-17T17:46:00Z",
+    "status": "shipped",
+    "items": [
+      {
+        "sku": "KNT-001",
+        "name": "Hazel Cashmere Crewneck",
+        "size": "M",
+        "color": "Heather Grey",
+        "qty": 1,
+        "unit_price": 189.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 189.0,
+    "shipping_fee": 29.95,
+    "total": 218.95,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Maya Singh",
+      "country": "CA",
+      "region": "AB",
+      "city": "Calgary",
+      "postal": "T2S 0J2",
+      "line1": "819 Mission Heights SW"
+    },
+    "shipping_method": "express",
+    "shipped_at": "2026-10-18T10:40:00Z",
+    "delivered_at": null,
+    "carrier": "DHL Express",
+    "tracking_number": "6236714278",
+    "shipments": [
+      {
+        "shipment_id": "10254-1",
+        "line_indexes": [
+          0
+        ],
+        "carrier": "DHL Express",
+        "tracking_number": "6236714278",
+        "shipped_at": "2026-10-18T10:40:00Z",
+        "delivered_at": null,
+        "status": "in_transit"
+      }
+    ],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10255",
+    "email": "taylor.jenkins@example.com",
+    "customer_name": "Taylor Jenkins",
+    "created_at": "2026-10-18T04:21:00Z",
+    "status": "unfulfilled",
+    "items": [
+      {
+        "sku": "SKT-002",
+        "name": "Dune Denim Midi Skirt",
+        "size": "M",
+        "color": "Ecru",
+        "qty": 1,
+        "unit_price": 92.0,
+        "final_sale": false
+      },
+      {
+        "sku": "TOP-002",
+        "name": "Hollis Linen Shirt",
+        "size": "M",
+        "color": "Sand",
+        "qty": 1,
+        "unit_price": 78.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 170.0,
+    "shipping_fee": 0.0,
+    "total": 170.0,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Taylor Jenkins",
+      "country": "US",
+      "region": "OR",
+      "city": "Portland",
+      "postal": "97214",
+      "line1": "418 Alder Crest Ln"
+    },
+    "shipping_method": "standard",
+    "shipped_at": null,
+    "delivered_at": null,
+    "carrier": null,
+    "tracking_number": null,
+    "shipments": [],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10256",
+    "email": "katrin.hoffmann@example.org",
+    "customer_name": "Katrin Hoffmann",
+    "created_at": "2026-10-19T06:49:00Z",
+    "status": "unfulfilled",
+    "items": [
+      {
+        "sku": "PNT-001",
+        "name": "Rowan Wide-Leg Trousers",
+        "size": "M",
+        "color": "Navy",
+        "qty": 1,
+        "unit_price": 108.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 108.0,
+    "shipping_fee": 0.0,
+    "total": 108.0,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Katrin Hoffmann",
+      "country": "DE",
+      "region": null,
+      "city": "Berlin",
+      "postal": "10437",
+      "line1": "Kastanienhof 12"
+    },
+    "shipping_method": "standard",
+    "shipped_at": null,
+    "delivered_at": null,
+    "carrier": null,
+    "tracking_number": null,
+    "shipments": [],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10257",
+    "email": "brooke.sullivan@example.com",
+    "customer_name": "Brooke Sullivan",
+    "created_at": "2026-10-19T07:30:00Z",
+    "status": "processing",
+    "items": [
+      {
+        "sku": "DRS-003",
+        "name": "Juniper Wrap Dress",
+        "size": "L",
+        "color": "Forest",
+        "qty": 1,
+        "unit_price": 98.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 98.0,
+    "shipping_fee": 8.95,
+    "total": 106.95,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Brooke Sullivan",
+      "country": "US",
+      "region": "VA",
+      "city": "Richmond",
+      "postal": "23220",
+      "line1": "2204 Monument Square"
+    },
+    "shipping_method": "standard",
+    "shipped_at": null,
+    "delivered_at": null,
+    "carrier": null,
+    "tracking_number": null,
+    "shipments": [],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10258",
+    "email": "marta.gil@example.net",
+    "customer_name": "Marta Gil",
+    "created_at": "2026-10-20T20:43:00Z",
+    "status": "unfulfilled",
+    "items": [
+      {
+        "sku": "DRS-007",
+        "name": "Ottilie Shirt Dress",
+        "size": "S",
+        "color": "Blue Stripe",
+        "qty": 1,
+        "unit_price": 112.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 112.0,
+    "shipping_fee": 0.0,
+    "total": 112.0,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Marta Gil",
+      "country": "ES",
+      "region": null,
+      "city": "Sevilla",
+      "postal": "41003",
+      "line1": "Calle Imagen Vieja 5, 1º"
+    },
+    "shipping_method": "standard",
+    "shipped_at": null,
+    "delivered_at": null,
+    "carrier": null,
+    "tracking_number": null,
+    "shipments": [],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10259",
+    "email": "victoria.shaw@example.com",
+    "customer_name": "Victoria Shaw",
+    "created_at": "2026-10-20T21:24:00Z",
+    "status": "unfulfilled",
+    "items": [
+      {
+        "sku": "ACC-001",
+        "name": "Esme Silk Scarf",
+        "size": "OS",
+        "color": "Terracotta",
+        "qty": 1,
+        "unit_price": 48.0,
+        "final_sale": false
+      },
+      {
+        "sku": "ACC-002",
+        "name": "Linden Leather Belt",
+        "size": "S/M",
+        "color": "Black",
+        "qty": 1,
+        "unit_price": 52.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 100.0,
+    "shipping_fee": 0.0,
+    "total": 100.0,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Victoria Shaw",
+      "country": "US",
+      "region": "PA",
+      "city": "Pittsburgh",
+      "postal": "15232",
+      "line1": "5600 Walnut Ridge Pl"
+    },
+    "shipping_method": "standard",
+    "shipped_at": null,
+    "delivered_at": null,
+    "carrier": null,
+    "tracking_number": null,
+    "shipments": [],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": null
+  },
+  {
+    "order_id": "10260",
+    "email": "poppy.harrington@example.com",
+    "customer_name": "Poppy Harrington",
+    "created_at": "2026-10-20T22:05:00Z",
+    "status": "cancelled",
+    "items": [
+      {
+        "sku": "TOP-001",
+        "name": "Selene Silk Blouse",
+        "size": "S",
+        "color": "Ivory",
+        "qty": 1,
+        "unit_price": 118.0,
+        "final_sale": false
+      }
+    ],
+    "discount_code": null,
+    "discount_amount": 0.0,
+    "subtotal": 118.0,
+    "shipping_fee": 0.0,
+    "total": 118.0,
+    "currency": "USD",
+    "ship_to": {
+      "name": "Poppy Harrington",
+      "country": "GB",
+      "region": null,
+      "city": "Oxford",
+      "postal": "OX2 6RX",
+      "line1": "17 Walton Crescent North"
+    },
+    "shipping_method": "standard",
+    "shipped_at": null,
+    "delivered_at": null,
+    "carrier": null,
+    "tracking_number": null,
+    "shipments": [],
+    "fulfillment_note": null,
+    "exception": null,
+    "return_info": null,
+    "cancellation": {
+      "cancelled_at": "2026-10-20T23:12:00Z",
+      "reason": "customer_request",
+      "refund_status": "pending",
+      "refund_amount_usd": 118.0
+    }
+  }
+]

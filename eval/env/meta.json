@@ -1,0 +1,116 @@
+{
+  "as_of": "2026-10-20",
+  "brand": {
+    "name": "Northwren",
+    "legal_name": "Northwren Studio (fictional)",
+    "site": "northwren.example",
+    "support_email": "care@northwren.example",
+    "wholesale_email": "wholesale@northwren.example",
+    "warehouses": [
+      "Shenzhen, CN",
+      "Dongguan, CN"
+    ],
+    "markets": [
+      "US",
+      "GB",
+      "EU",
+      "CA",
+      "AU"
+    ]
+  },
+  "timezone_note": "All timestamps are UTC. Day counts (return window, quality window, price adjustment) compare calendar dates in UTC against as_of.",
+  "currency": "USD (all orders are charged in USD)",
+  "order_status_definitions": {
+    "unfulfilled": "Paid, not yet released to the warehouse. Can be cancelled or edited.",
+    "processing": "Released to the warehouse for picking/packing. Cancellation not guaranteed.",
+    "shipped": "At least one shipment handed to the carrier and not all shipments delivered.",
+    "delivered": "All shipments delivered according to the carrier.",
+    "returned": "Return received and refunded.",
+    "refund_pending": "Return started; refund not yet issued (parcel in transit back or under inspection).",
+    "exception": "Operations flagged a delivery problem (customs hold, address issue, or no tracking update).",
+    "cancelled": "Order cancelled before shipping."
+  },
+  "machine_readable_mirrors": {
+    "_note": "Mirrors of KB rules used by tools/check_data.py to verify order amounts. If you edit the KB, edit these too.",
+    "shipping_fee_schedules": [
+      {
+        "effective_from": "2025-03-01",
+        "doc_id": "policy_shipping_2025",
+        "standard": {
+          "US": {
+            "fee": 8.95,
+            "free_from": 79.0
+          },
+          "INTL": {
+            "fee": 12.95,
+            "free_from": 129.0
+          }
+        },
+        "express": {
+          "US": {
+            "fee": 19.95,
+            "free_from": null
+          },
+          "INTL": {
+            "fee": 29.95,
+            "free_from": null
+          }
+        }
+      },
+      {
+        "effective_from": "2026-09-01",
+        "doc_id": "policy_shipping",
+        "standard": {
+          "US": {
+            "fee": 8.95,
+            "free_from": 99.0
+          },
+          "INTL": {
+            "fee": 12.95,
+            "free_from": 99.0
+          }
+        },
+        "express": {
+          "US": {
+            "fee": 19.95,
+            "free_from": null
+          },
+          "INTL": {
+            "fee": 29.95,
+            "free_from": null
+          }
+        }
+      }
+    ],
+    "discount_codes": {
+      "SUMMER20": {
+        "percent": 20,
+        "valid_from": "2026-07-15",
+        "valid_to": "2026-08-31",
+        "min_eligible_subtotal": 0,
+        "first_order_only": false,
+        "doc_id": "discount_rules"
+      },
+      "WELCOME10": {
+        "percent": 10,
+        "valid_from": "2025-01-01",
+        "valid_to": null,
+        "min_eligible_subtotal": 0,
+        "first_order_only": true,
+        "doc_id": "discount_rules"
+      },
+      "AUTUMN15": {
+        "percent": 15,
+        "valid_from": "2026-10-01",
+        "valid_to": "2026-10-31",
+        "min_eligible_subtotal": 120,
+        "first_order_only": false,
+        "doc_id": "discount_rules"
+      }
+    },
+    "return_window_days": 30,
+    "quality_report_window_days": 14,
+    "price_adjustment_window_days": 7,
+    "us_return_label_fee_usd": 7.95
+  }
+}

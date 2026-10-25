@@ -1,0 +1,13 @@
+[project]
+name = "crossborder-inquiry-agent"
+version = "0.1.0"
+description = "Eval infrastructure for a cross-border apparel inquiry / after-sales agent (fictional brand Northwren)"
+requires-python = ">=3.11"
+dependencies = ["pyyaml", "jsonschema"]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]

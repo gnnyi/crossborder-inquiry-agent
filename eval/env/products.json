@@ -1,0 +1,1044 @@
+[
+  {
+    "sku": "DRS-001",
+    "name": "Marlow Linen Midi Dress",
+    "category": "dresses",
+    "price_usd": 128.0,
+    "compare_at_usd": null,
+    "price_history": [
+      {
+        "price_usd": 128.0,
+        "effective_from": "2026-03-01"
+      }
+    ],
+    "material": "100% linen",
+    "colors": [
+      "Sand",
+      "Black",
+      "Sage"
+    ],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "stock": {
+      "XS": 5,
+      "S": 12,
+      "M": 3,
+      "L": 0,
+      "XL": 0
+    },
+    "final_sale": false,
+    "final_sale_since": null,
+    "fit_note": "Relaxed through the waist; true to size."
+  },
+  {
+    "sku": "DRS-002",
+    "name": "Clementine Silk Slip Dress",
+    "category": "dresses",
+    "price_usd": 168.0,
+    "compare_at_usd": null,
+    "price_history": [
+      {
+        "price_usd": 168.0,
+        "effective_from": "2026-03-01"
+      }
+    ],
+    "material": "100% mulberry silk (19 momme)",
+    "colors": [
+      "Champagne",
+      "Ink"
+    ],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "stock": {
+      "XS": 5,
+      "S": 2,
+      "M": 0,
+      "L": 0
+    },
+    "final_sale": false,
+    "final_sale_since": null,
+    "fit_note": "Bias cut that skims the body; size up if you are between sizes."
+  },
+  {
+    "sku": "DRS-003",
+    "name": "Juniper Wrap Dress",
+    "category": "dresses",
+    "price_usd": 98.0,
+    "compare_at_usd": null,
+    "price_history": [
+      {
+        "price_usd": 98.0,
+        "effective_from": "2026-03-01"
+      }
+    ],
+    "material": "95% viscose, 5% elastane",
+    "colors": [
+      "Forest",
+      "Rust",
+      "Navy"
+    ],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "stock": {
+      "XS": 3,
+      "S": 25,
+      "M": 6,
+      "L": 4,
+      "XL": 6,
+      "XXL": 15
+    },
+    "final_sale": false,
+    "final_sale_since": null,
+    "fit_note": "Adjustable wrap tie; true to size."
+  },
+  {
+    "sku": "DRS-004",
+    "name": "Aster Tiered Maxi Dress",
+    "category": "dresses",
+    "price_usd": 118.0,
+    "compare_at_usd": 148.0,
+    "price_history": [
+      {
+        "price_usd": 148.0,
+        "effective_from": "2026-03-01"
+      },
+      {
+        "price_usd": 118.0,
+        "effective_from": "2026-10-17"
+      }
+    ],
+    "material": "100% cotton voile",
+    "colors": [
+      "White",
+      "Indigo"
+    ],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "stock": {
+      "XS": 0,
+      "S": 25,
+      "M": 6,
+      "L": 25,
+      "XL": 6
+    },
+    "final_sale": false,
+    "final_sale_since": null,
+    "fit_note": "Loose fit; length is 142 cm, petite customers may want to hem."
+  },
+  {
+    "sku": "DRS-005",
+    "name": "Wren Knit Sweater Dress",
+    "category": "dresses",
+    "price_usd": 136.0,
+    "compare_at_usd": null,
+    "price_history": [
+      {
+        "price_usd": 136.0,
+        "effective_from": "2026-03-01"
+      }
+    ],
+    "material": "70% merino wool, 30% nylon",
+    "colors": [
+      "Oatmeal",
+      "Charcoal"
+    ],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "stock": {
+      "XS": 1,
+      "S": 0,
+      "M": 2,
+      "L": 4
+    },
+    "final_sale": false,
+    "final_sale_since": null,
+    "fit_note": "Fitted; size up for a relaxed look."
+  },
+  {
+    "sku": "DRS-006",
+    "name": "Delphine Satin Midi Dress",
+    "category": "dresses",
+    "price_usd": 89.0,
+    "compare_at_usd": 158.0,
+    "price_history": [
+      {
+        "price_usd": 158.0,
+        "effective_from": "2026-03-01"
+      },
+      {
+        "price_usd": 89.0,
+        "effective_from": "2026-08-15"
+      }
+    ],
+    "material": "100% polyester satin",
+    "colors": [
+      "Emerald",
+      "Plum"
+    ],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "stock": {
+      "XS": 0,
+      "S": 9,
+      "M": 18,
+      "L": 15
+    },
+    "final_sale": true,
+    "final_sale_since": "2026-08-15",
+    "fit_note": "Runs small at the bust; size up."
+  },
+  {
+    "sku": "DRS-007",
+    "name": "Ottilie Shirt Dress",
+    "category": "dresses",
+    "price_usd": 112.0,
+    "compare_at_usd": null,
+    "price_history": [
+      {
+        "price_usd": 112.0,
+        "effective_from": "2026-03-01"
+      }
+    ],
+    "material": "100% organic cotton poplin",
+    "colors": [
+      "Blue Stripe",
+      "White"
+    ],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "stock": {
+      "XS": 3,
+      "S": 6,
+      "M": 18,
+      "L": 2,
+      "XL": 12
+    },
+    "final_sale": false,
+    "final_sale_since": null,
+    "fit_note": "Straight fit with a removable belt."
+  },
+  {
+    "sku": "TOP-001",
+    "name": "Selene Silk Blouse",
+    "category": "tops",
+    "price_usd": 118.0,
+    "compare_at_usd": null,
+    "price_history": [
+      {
+        "price_usd": 118.0,
+        "effective_from": "2026-03-01"
+      }
+    ],
+    "material": "100% mulberry silk",
+    "colors": [
+      "Ivory",
+      "Black",
+      "Dusty Rose"
+    ],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "stock": {
+      "XS": 1,
+      "S": 2,
+      "M": 6,
+      "L": 25,
+      "XL": 6
+    },
+    "final_sale": false,
+    "final_sale_since": null,
+    "fit_note": "Relaxed fit; true to size."
+  },
+  {
+    "sku": "TOP-002",
+    "name": "Hollis Linen Shirt",
+    "category": "tops",
+    "price_usd": 78.0,
+    "compare_at_usd": null,
+    "price_history": [
+      {
+        "price_usd": 78.0,
+        "effective_from": "2026-03-01"
+      }
+    ],
+    "material": "100% linen",
+    "colors": [
+      "White",
+      "Olive",
+      "Sand"
+    ],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "stock": {
+      "XS": 5,
+      "S": 6,
+      "M": 18,
+      "L": 12,
+      "XL": 4
+    },
+    "final_sale": false,
+    "final_sale_since": null,
+    "fit_note": "Oversized; size down for a closer fit."
+  },
+  {
+    "sku": "TOP-003",
+    "name": "Bea Ribbed Tank",
+    "category": "tops",
+    "price_usd": 42.0,
+    "compare_at_usd": null,
+    "price_history": [
+      {
+        "price_usd": 42.0,
+        "effective_from": "2026-03-01"
+      }
+    ],
+    "material": "92% cotton, 8% elastane",
+    "colors": [
+      "Black",
+      "White",
+      "Mocha"
+    ],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "stock": {
+      "XS": 3,
+      "S": 4,
+      "M": 2,
+      "L": 0
+    },
+    "final_sale": false,
+    "final_sale_since": null,
+    "fit_note": "Slim, stretchy fit."
+  },
+  {
+    "sku": "TOP-004",
+    "name": "Margo Puff Sleeve Top",
+    "category": "tops",
+    "price_usd": 64.0,
+    "compare_at_usd": 76.0,
+    "price_history": [
+      {
+        "price_usd": 76.0,
+        "effective_from": "2026-03-01"
+      },
+      {
+        "price_usd": 64.0,
+        "effective_from": "2026-10-17"
+      }
+    ],
+    "material": "100% cotton",
+    "colors": [
+      "White",
+      "Butter"
+    ],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "stock": {
+      "XS": 3,
+      "S": 2,
+      "M": 6,
+      "L": 2
+    },
+    "final_sale": false,
+    "final_sale_since": null,
+    "fit_note": "Cropped length; true to size."
+  },
+  {
+    "sku": "TOP-005",
+    "name": "Iris Lace Camisole",
+    "category": "tops",
+    "price_usd": 49.0,
+    "compare_at_usd": 68.0,
+    "price_history": [
+      {
+        "price_usd": 68.0,
+        "effective_from": "2026-03-01"
+      },
+      {
+        "price_usd": 49.0,
+        "effective_from": "2026-08-15"
+      }
+    ],
+    "material": "90% nylon, 10% elastane lace",
+    "colors": [
+      "Black",
+      "Ecru"
+    ],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "stock": {
+      "XS": 5,
+      "S": 6,
+      "M": 0,
+      "L": 25
+    },
+    "final_sale": true,
+    "final_sale_since": "2026-08-15",
+    "fit_note": "Fitted; adjustable straps."
+  },
+  {
+    "sku": "SKT-001",
+    "name": "Paloma Pleated Midi Skirt",
+    "category": "skirts",
+    "price_usd": 88.0,
+    "compare_at_usd": null,
+    "price_history": [
+      {
+        "price_usd": 88.0,
+        "effective_from": "2026-03-01"
+      }
+    ],
+    "material": "100% recycled polyester",
+    "colors": [
+      "Black",
+      "Camel",
+      "Bottle Green"
+    ],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "stock": {
+      "XS": 5,
+      "S": 25,
+      "M": 25,
+      "L": 15,
+      "XL": 4
+    },
+    "final_sale": false,
+    "final_sale_since": null,
+    "fit_note": "Elastic back waist; true to size."
+  },
+  {
+    "sku": "SKT-002",
+    "name": "Dune Denim Midi Skirt",
+    "category": "skirts",
+    "price_usd": 92.0,
+    "compare_at_usd": null,
+    "price_history": [
+      {
+        "price_usd": 92.0,
+        "effective_from": "2026-03-01"
+      }
+    ],
+    "material": "100% cotton denim",
+    "colors": [
+      "Mid Wash",
+      "Ecru"
+    ],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "stock": {
+      "XS": 1,
+      "S": 15,
+      "M": 15,
+      "L": 6,
+      "XL": 4
+    },
+    "final_sale": false,
+    "final_sale_since": null,
+    "fit_note": "No stretch; size up if between sizes."
+  },
+  {
+    "sku": "SKT-003",
+    "name": "Celeste Satin Bias Skirt",
+    "category": "skirts",
+    "price_usd": 74.0,
+    "compare_at_usd": null,
+    "price_history": [
+      {
+        "price_usd": 74.0,
+        "effective_from": "2026-03-01"
+      }
+    ],
+    "material": "100% viscose satin",
+    "colors": [
+      "Champagne",
+      "Black",
+      "Cobalt"
+    ],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "stock": {
+      "XS": 3,
+      "S": 18,
+      "M": 12,
+      "L": 18
+    },
+    "final_sale": false,
+    "final_sale_since": null,
+    "fit_note": "Bias cut; sits on the natural waist."
+  },
+  {
+    "sku": "SKT-004",
+    "name": "Fern Wool Mini Skirt",
+    "category": "skirts",
+    "price_usd": 69.0,
+    "compare_at_usd": 98.0,
+    "price_history": [
+      {
+        "price_usd": 98.0,
+        "effective_from": "2026-03-01"
+      },
+      {
+        "price_usd": 69.0,
+        "effective_from": "2026-08-15"
+      }
+    ],
+    "material": "60% wool, 40% polyester",
+    "colors": [
+      "Charcoal",
+      "Berry"
+    ],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "stock": {
+      "XS": 5,
+      "S": 18,
+      "M": 18,
+      "L": 6
+    },
+    "final_sale": true,
+    "final_sale_since": "2026-08-15",
+    "fit_note": "Fitted A-line; runs slightly small."
+  },
+  {
+    "sku": "PNT-001",
+    "name": "Rowan Wide-Leg Trousers",
+    "category": "pants",
+    "price_usd": 108.0,
+    "compare_at_usd": null,
+    "price_history": [
+      {
+        "price_usd": 108.0,
+        "effective_from": "2026-03-01"
+      }
+    ],
+    "material": "68% polyester, 28% viscose, 4% elastane",
+    "colors": [
+      "Black",
+      "Taupe",
+      "Navy"
+    ],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL",
+      "XXL"
+    ],
+    "stock": {
+      "XS": 1,
+      "S": 0,
+      "M": 0,
+      "L": 25,
+      "XL": 6,
+      "XXL": 2
+    },
+    "final_sale": false,
+    "final_sale_since": null,
+    "fit_note": "High rise; inseam 78 cm (30.5 in)."
+  },
+  {
+    "sku": "PNT-002",
+    "name": "Ivy Linen Drawstring Pants",
+    "category": "pants",
+    "price_usd": 84.0,
+    "compare_at_usd": null,
+    "price_history": [
+      {
+        "price_usd": 84.0,
+        "effective_from": "2026-03-01"
+      }
+    ],
+    "material": "100% linen",
+    "colors": [
+      "Natural",
+      "Black"
+    ],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "stock": {
+      "XS": 1,
+      "S": 12,
+      "M": 4,
+      "L": 0,
+      "XL": 2
+    },
+    "final_sale": false,
+    "final_sale_since": null,
+    "fit_note": "Relaxed fit with drawstring waist."
+  },
+  {
+    "sku": "PNT-003",
+    "name": "Sloane Straight Jeans",
+    "category": "pants",
+    "price_usd": 98.0,
+    "compare_at_usd": null,
+    "price_history": [
+      {
+        "price_usd": 98.0,
+        "effective_from": "2026-03-01"
+      }
+    ],
+    "material": "99% cotton, 1% elastane",
+    "colors": [
+      "Vintage Blue",
+      "Black"
+    ],
+    "sizes": [
+      "24",
+      "25",
+      "26",
+      "27",
+      "28",
+      "29",
+      "30",
+      "31",
+      "32"
+    ],
+    "stock": {
+      "24": 4,
+      "25": 18,
+      "26": 25,
+      "27": 18,
+      "28": 0,
+      "29": 5,
+      "30": 0,
+      "31": 12,
+      "32": 9
+    },
+    "final_sale": false,
+    "final_sale_since": null,
+    "fit_note": "Sized by waist; true to size, minimal stretch."
+  },
+  {
+    "sku": "PNT-004",
+    "name": "Tilda Pleated Culottes",
+    "category": "pants",
+    "price_usd": 79.0,
+    "compare_at_usd": null,
+    "price_history": [
+      {
+        "price_usd": 79.0,
+        "effective_from": "2026-03-01"
+      }
+    ],
+    "material": "100% Tencel lyocell",
+    "colors": [
+      "Sage",
+      "Black"
+    ],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "stock": {
+      "XS": 3,
+      "S": 18,
+      "M": 18,
+      "L": 25
+    },
+    "final_sale": false,
+    "final_sale_since": null,
+    "fit_note": "Wide cropped leg; true to size."
+  },
+  {
+    "sku": "KNT-001",
+    "name": "Hazel Cashmere Crewneck",
+    "category": "knitwear",
+    "price_usd": 189.0,
+    "compare_at_usd": null,
+    "price_history": [
+      {
+        "price_usd": 189.0,
+        "effective_from": "2026-03-01"
+      }
+    ],
+    "material": "100% cashmere",
+    "colors": [
+      "Oatmeal",
+      "Black",
+      "Heather Grey"
+    ],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "stock": {
+      "XS": 1,
+      "S": 0,
+      "M": 18,
+      "L": 12,
+      "XL": 6
+    },
+    "final_sale": false,
+    "final_sale_since": null,
+    "fit_note": "Classic fit; true to size."
+  },
+  {
+    "sku": "KNT-002",
+    "name": "Bram Cable Cardigan",
+    "category": "knitwear",
+    "price_usd": 128.0,
+    "compare_at_usd": null,
+    "price_history": [
+      {
+        "price_usd": 128.0,
+        "effective_from": "2026-03-01"
+      }
+    ],
+    "material": "50% wool, 50% acrylic",
+    "colors": [
+      "Cream",
+      "Moss"
+    ],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "stock": {
+      "XS": 5,
+      "S": 2,
+      "M": 9,
+      "L": 18
+    },
+    "final_sale": false,
+    "final_sale_since": null,
+    "fit_note": "Oversized; size down for a closer fit."
+  },
+  {
+    "sku": "KNT-003",
+    "name": "Lark Mohair Blend Sweater",
+    "category": "knitwear",
+    "price_usd": 118.0,
+    "compare_at_usd": null,
+    "price_history": [
+      {
+        "price_usd": 118.0,
+        "effective_from": "2026-03-01"
+      }
+    ],
+    "material": "45% mohair, 30% polyamide, 25% wool",
+    "colors": [
+      "Lilac",
+      "Ivory"
+    ],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "stock": {
+      "XS": 5,
+      "S": 2,
+      "M": 2,
+      "L": 15
+    },
+    "final_sale": false,
+    "final_sale_since": null,
+    "fit_note": "Relaxed, slightly cropped."
+  },
+  {
+    "sku": "KNT-004",
+    "name": "Nora Knit Polo",
+    "category": "knitwear",
+    "price_usd": 72.0,
+    "compare_at_usd": null,
+    "price_history": [
+      {
+        "price_usd": 72.0,
+        "effective_from": "2026-03-01"
+      }
+    ],
+    "material": "100% cotton",
+    "colors": [
+      "Navy",
+      "Ecru"
+    ],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "stock": {
+      "XS": 5,
+      "S": 15,
+      "M": 0,
+      "L": 6
+    },
+    "final_sale": false,
+    "final_sale_since": null,
+    "fit_note": "Regular fit."
+  },
+  {
+    "sku": "OUT-001",
+    "name": "Arden Wool Coat",
+    "category": "outerwear",
+    "price_usd": 198.0,
+    "compare_at_usd": null,
+    "price_history": [
+      {
+        "price_usd": 198.0,
+        "effective_from": "2026-03-01"
+      }
+    ],
+    "material": "80% wool, 20% polyamide",
+    "colors": [
+      "Camel",
+      "Black"
+    ],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "stock": {
+      "XS": 5,
+      "S": 1,
+      "M": 0,
+      "L": 15,
+      "XL": 9
+    },
+    "final_sale": false,
+    "final_sale_since": null,
+    "fit_note": "Roomy enough for a knit underneath; true to size."
+  },
+  {
+    "sku": "OUT-002",
+    "name": "Quinn Trench Coat",
+    "category": "outerwear",
+    "price_usd": 176.0,
+    "compare_at_usd": null,
+    "price_history": [
+      {
+        "price_usd": 176.0,
+        "effective_from": "2026-03-01"
+      }
+    ],
+    "material": "100% cotton gabardine",
+    "colors": [
+      "Stone",
+      "Navy"
+    ],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L",
+      "XL"
+    ],
+    "stock": {
+      "XS": 5,
+      "S": 18,
+      "M": 15,
+      "L": 0,
+      "XL": 15
+    },
+    "final_sale": false,
+    "final_sale_since": null,
+    "fit_note": "Classic fit; sleeves run slightly long."
+  },
+  {
+    "sku": "OUT-003",
+    "name": "Pippa Quilted Jacket",
+    "category": "outerwear",
+    "price_usd": 124.0,
+    "compare_at_usd": null,
+    "price_history": [
+      {
+        "price_usd": 124.0,
+        "effective_from": "2026-03-01"
+      }
+    ],
+    "material": "100% recycled nylon shell, polyester fill",
+    "colors": [
+      "Olive",
+      "Black"
+    ],
+    "sizes": [
+      "XS",
+      "S",
+      "M",
+      "L"
+    ],
+    "stock": {
+      "XS": 3,
+      "S": 0,
+      "M": 25,
+      "L": 9
+    },
+    "final_sale": false,
+    "final_sale_since": null,
+    "fit_note": "Boxy fit."
+  },
+  {
+    "sku": "ACC-001",
+    "name": "Esme Silk Scarf",
+    "category": "accessories",
+    "price_usd": 48.0,
+    "compare_at_usd": null,
+    "price_history": [
+      {
+        "price_usd": 48.0,
+        "effective_from": "2026-03-01"
+      }
+    ],
+    "material": "100% silk twill",
+    "colors": [
+      "Floral Blue",
+      "Terracotta"
+    ],
+    "sizes": [
+      "OS"
+    ],
+    "stock": {
+      "OS": 15
+    },
+    "final_sale": false,
+    "final_sale_since": null,
+    "fit_note": "90 x 90 cm square."
+  },
+  {
+    "sku": "ACC-002",
+    "name": "Linden Leather Belt",
+    "category": "accessories",
+    "price_usd": 52.0,
+    "compare_at_usd": null,
+    "price_history": [
+      {
+        "price_usd": 52.0,
+        "effective_from": "2026-03-01"
+      }
+    ],
+    "material": "100% cowhide leather",
+    "colors": [
+      "Black",
+      "Tan"
+    ],
+    "sizes": [
+      "S/M",
+      "M/L"
+    ],
+    "stock": {
+      "S/M": 25,
+      "M/L": 18
+    },
+    "final_sale": false,
+    "final_sale_since": null,
+    "fit_note": "S/M fits waist 64-76 cm; M/L fits 76-90 cm."
+  },
+  {
+    "sku": "ACC-003",
+    "name": "Maren Woven Tote",
+    "category": "accessories",
+    "price_usd": 68.0,
+    "compare_at_usd": null,
+    "price_history": [
+      {
+        "price_usd": 68.0,
+        "effective_from": "2026-03-01"
+      }
+    ],
+    "material": "100% jute with cotton lining",
+    "colors": [
+      "Natural"
+    ],
+    "sizes": [
+      "OS"
+    ],
+    "stock": {
+      "OS": 4
+    },
+    "final_sale": false,
+    "final_sale_since": null,
+    "fit_note": "38 x 30 x 14 cm."
+  }
+]

@@ -1,0 +1,53 @@
+{
+  "_format": "Anthropic Messages API tool definitions (name / description / input_schema). For OpenAI-style function calling use {\"type\": \"function\", \"function\": {\"name\", \"description\", \"parameters\": input_schema}}.",
+  "tools": [
+    {
+      "name": "get_order",
+      "description": "Look up one order by its order number. Returns the full order: customer email and name, status, line items, discount, amounts, shipping address, shipping method, shipments, return / cancellation / exception info. The order number must be digits only (for example \"10231\"); any other format returns invalid_argument.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "order_id": {"type": "string", "description": "Order number, digits only, e.g. \"10231\"."}
+        },
+        "required": ["order_id"],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "find_orders_by_email",
+      "description": "List the orders placed with an email address (oldest first) as summaries: order_id, created_at, status, total, currency, item_count. Returns not_found when the email has no orders. Call get_order for details.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "email": {"type": "string", "description": "Customer email address."}
+        },
+        "required": ["email"],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "get_tracking",
+      "description": "Carrier tracking for an order: order_status and, for each shipment, carrier, tracking_number, status and the scan events (ts, location, code, description). Unshipped orders return an empty shipments list. The order number must be digits only.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "order_id": {"type": "string", "description": "Order number, digits only, e.g. \"10231\"."}
+        },
+        "required": ["order_id"],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "get_product",
+      "description": "Look up a product by SKU (format AAA-000, e.g. \"DRS-004\"). Returns name, category, current price, compare-at price, price history, material, colours, sizes, stock by size, final-sale flag and fit note. If the customer only gives a product name, find the SKU in the catalog_index knowledge-base document first.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "sku": {"type": "string", "description": "SKU, e.g. \"DRS-004\"."}
+        },
+        "required": ["sku"],
+        "additionalProperties": false
+      }
+    }
+  ]
+}

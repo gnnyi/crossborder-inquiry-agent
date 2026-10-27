@@ -69,7 +69,7 @@ def test_worker_finding_with_bad_source_is_sent_back():
     bad = {"type": "tool", "call_id": "c1", "field": "nope"}
     llm = FakeLLM(script_for(worker_source=bad))
     out, trace = run_v2(MSG, llm, Sandbox(), Meter())
-    worker = next(t for t in trace if t.get("worker") == "orders")
+    worker = next(t for t in trace[0]["trace"] if t.get("worker") == "orders")
     submits = [t for t in worker["trace"] if t["type"] == "submit"]
     assert submits[0]["errors"] and not submits[1]["errors"]     # second submission (no findings) is accepted
 

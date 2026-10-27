@@ -99,6 +99,16 @@ def evidence_for(claims: list, sandbox: Sandbox) -> list[dict]:
     return out
 
 
+def _interleave(orch: list[dict], workers: list[dict]) -> list[dict]:
+    """Put each worker's trace right after the delegate call that started it (workers run in call order)."""
+    pending, merged = list(workers), []
+    for e in orch:
+        if e["type"] == "tool" and e["name"] == "delegate" and e["status"] != "invalid_argument" and pending:
+            merged.append(pending.pop(0))
+        merged.append(e)
+    return merged + pending
+
+
 def run_v2(msg: dict, llm, sandbox: Sandbox, meter: Meter, run_id: str = "adhoc") -> tuple[dict, list[dict]]:
     trace: list[dict] = []
     stats = {"delegations": Counter(), "review_verdicts": [], "worker_handoffs": 0, "unresolved": 0}
@@ -152,7 +162,7 @@ def run_v2(msg: dict, llm, sandbox: Sandbox, meter: Meter, run_id: str = "adhoc"
     system = prompts.system_blocks(prompts.v2_orchestrator_instructions(), with_kb=False)
     res = agent_loop(llm, system, render_message(msg), [DELEGATE_TOOL, submit_tool("b")], delegate, check,
                      ORCH_LIMITS, meter, tag="v2.orchestrator")
-    trace = [{"type": "orchestrator", "trace": res.trace}] + trace
+    trace = [{"type": "orchestrator", "trace": _interleave(res.trace, trace)}]
     if res.submitted is None:
         out = handoff_output(msg["msg_id"], res.handoff_reason, sandbox.log, meta())
     else:

@@ -83,7 +83,9 @@ def smoke_script(req: dict) -> Reply:
         made = _calls_made(req)
         if made == 0 and order:
             return _reply([tool_use("delegate", {"worker": "orders", "brief": {"task": "Look up the order", "context": f"order {order.group(1)}", "questions": ["status"]}})])
-        sub = {"intents": ["OTHER"], "priority": "P2", "risk_flags": [], "reply": _reply_body(_worker_results(req)), "handoff_note": None}
+        claims = [{"text": f["statement"], "source": f["source"]} for f in _worker_findings(req)]
+        reply = {"text": "Hi, thanks for reaching out. " + " ".join(c["text"] for c in claims) + " Northwren Care", "claims": claims}
+        sub = {"intents": ["OTHER"], "priority": "P2", "risk_flags": [], "reply": reply, "handoff_note": None}
         return _reply([tool_use("submit_response", sub)])
 
     # V0: one lookup if an order number is visible, then submit
@@ -95,12 +97,6 @@ def smoke_script(req: dict) -> Reply:
     return _reply([tool_use("submit_response", sub)])
 
 
-def _worker_results(req: dict) -> list[dict]:
-    """V2: findings returned by workers, shaped like tool payloads so _reply_body can cite them."""
-    out = []
-    for p in _ok_results(req):
-        for f in (p.get("result") or {}).get("findings", []):
-            src = f.get("source", {})
-            if src.get("type") == "tool":
-                out.append({"call_id": src["call_id"], "result": {"status": "x"}})
-    return out
+def _worker_findings(req: dict) -> list[dict]:
+    """V2: findings the workers returned so far."""
+    return [f for p in _ok_results(req) for f in (p.get("result") or {}).get("findings", [])]

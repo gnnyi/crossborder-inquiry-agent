@@ -1,0 +1,6 @@
+# 三种架构统一从这里读模型。run.py --model 可以临时覆盖 main。
+main: claude-sonnet-5-5
+cheap: claude-haiku-5-5
+# 每次请求的输出上限和思考强度（Sonnet 5.5 默认 high；agent 多步工具调用从 medium 起步）
+max_tokens: 8000
+effort: medium

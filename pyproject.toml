@@ -3,7 +3,13 @@ name = "crossborder-inquiry-agent"
 version = "0.1.0"
 description = "Eval infrastructure for a cross-border apparel inquiry / after-sales agent (fictional brand Northwren)"
 requires-python = ">=3.11"
-dependencies = ["pyyaml", "jsonschema"]
+dependencies = [
+    "pyyaml",
+    "jsonschema",
+    "anthropic>=2.3.0",
+    "langgraph>=1.2.18",
+    "python-dotenv>=1.2.4",
+]
 
 [project.optional-dependencies]
 dev = ["pytest"]

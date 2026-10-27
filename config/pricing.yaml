@@ -1,0 +1,22 @@
+# 美元 / 百万 tokens。
+# 来源：claude-api skill 内置价格表（缓存日期 2026-10-06）。未联网到 docs.claude.com 核实 → 状态：未核实。
+# cache_write 按 5 分钟 TTL 的 1.25 倍输入价推算；cache_read 按官方表（Sonnet 5.5 为 $0.20）或 0.1 倍输入价推算。
+verified: false
+source: "claude-api skill bundled table, cached 2026-10-06; not checked against docs.claude.com"
+models:
+  claude-sonnet-5-5:
+    input: 2.00
+    output: 10.00
+    cache_write: 2.50
+    cache_read: 0.20
+  claude-haiku-5-5:
+    # 100K tokens 以内的价格；超过 100K 为 $0.50 / $2.50（本项目单次请求远低于 100K）
+    input: 0.10
+    output: 0.50
+    cache_write: 0.125
+    cache_read: 0.01
+  fake:
+    input: 0
+    output: 0
+    cache_write: 0
+    cache_read: 0

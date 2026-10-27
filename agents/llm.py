@@ -40,6 +40,11 @@ class LLMError(RuntimeError):
     """Non-retryable API failure, or retries exhausted."""
 
 
+class ProviderBlocked(RuntimeError):
+    """401 / 402 / 403: bad key, no balance, no permission. Not the agent's fault: the whole run must stop
+    and the message must not be recorded as a failure."""
+
+
 def load_models(provider: str | None = None) -> dict:
     """The active provider's settings flattened: provider, base_url, key_env, main, cheap, effort, auto_cache, max_tokens.
     Provider comes from the argument, then $LLM_PROVIDER, then models.yaml."""
@@ -200,6 +205,8 @@ class LLM(_Base):
             except (anthropic.RateLimitError, anthropic.InternalServerError, anthropic.APIConnectionError) as e:
                 err = e
             except anthropic.APIStatusError as e:
+                if e.status_code in (401, 402, 403):
+                    raise ProviderBlocked(f"{e.status_code}: {e.message}") from e
                 if e.status_code not in self.RETRY_STATUSES:
                     raise LLMError(f"{e.status_code}: {e.message}") from e
                 err = e

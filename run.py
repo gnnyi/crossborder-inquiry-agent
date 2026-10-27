@@ -21,8 +21,8 @@ from pathlib import Path
 
 from dotenv import load_dotenv
 
-from agents.common import RUNS_DIR, RunDir, check_output, load_messages
-from agents.llm import Budget, BudgetExceeded, FakeLLM, LLM, Meter, has_api_key, load_models
+from agents.common import RUNS_DIR, RunDir, check_output, load_messages, prompt_sha
+from agents.llm import Budget, BudgetExceeded, ProviderBlocked, FakeLLM, LLM, Meter, has_api_key, load_models
 from sandbox.tools import FaultConfig, Sandbox
 
 MESSAGE_TIMEOUT_S = 300
@@ -55,7 +55,7 @@ def process(msg: dict, rd: RunDir, runner, llm, fault: FaultConfig | None, run_i
     t0 = time.monotonic()
     try:
         out, trace = runner(msg, llm, sb, meter, run_id)
-    except BudgetExceeded:
+    except (BudgetExceeded, ProviderBlocked):
         raise
     except Exception as e:  # noqa: BLE001 — any runner crash becomes errors/<msg_id>.json, never a partial output
         rd.write_error(mid, "exception", f"{type(e).__name__}: {e}", latency_ms=round((time.monotonic() - t0) * 1000),
@@ -108,7 +108,7 @@ def main(argv: list[str] | None = None) -> int:
 
     arch_dir = args.arch + (f"-{args.variant}" if args.arch == "V0" else "")
     fault = parse_fault(args.fault)
-    meta = {"arch": arch_dir, "run_id": args.run_id, "model": llm.model, "variant": args.variant if args.arch == "V0" else None,
+    meta = {"arch": arch_dir, "run_id": args.run_id, "model": llm.model, "variant": args.variant if args.arch == "V0" else None, "prompt_sha": prompt_sha(),
             "provider": getattr(llm, "provider", "fake"), "models_config": load_models(args.provider), "started_at": time.strftime("%Y-%m-%dT%H:%M:%S")}
     if fault:
         meta["fault"] = fault.to_dict()
@@ -131,9 +131,10 @@ def main(argv: list[str] | None = None) -> int:
         for f in as_completed(futures):
             try:
                 status = f.result()
-            except BudgetExceeded as e:
+            except (BudgetExceeded, ProviderBlocked) as e:
                 if not stopped:
-                    print(f"BUDGET STOP: {e}. Remaining messages are left unrun; resume later with the same --run-id.", file=sys.stderr)
+                    kind = "BUDGET STOP" if isinstance(e, BudgetExceeded) else "PROVIDER STOP (key / balance / permission)"
+                    print(f"{kind}: {e}. Remaining messages are left unrun; resume later with the same --run-id.", file=sys.stderr)
                     stopped = True
                     for other in futures:
                         other.cancel()

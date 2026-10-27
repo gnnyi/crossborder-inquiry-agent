@@ -30,6 +30,12 @@ PLACEHOLDER_LABEL = {"gold_route": "AUTO_REPLY", "intents": [], "risk_flags": []
                      "expected_tool_calls": [], "gold_kb_spans": []}
 ORDER_ID_RE = re.compile(r"(?<![\d$.,])\b(1\d{4})\b(?![.,]\d)")
 ROUTES = ["AUTO_REPLY", "DRAFT_FOR_REVIEW", "ESCALATE"]
+MESSAGES_PATH = REPO_ROOT / "eval" / "messages.jsonl"
+AS_OF = json.loads((REPO_ROOT / "eval" / "env" / "meta.json").read_text())["as_of"]
+
+
+def load_messages() -> dict[str, dict]:
+    return {m["msg_id"]: m for m in map(json.loads, MESSAGES_PATH.read_text(encoding="utf-8").splitlines()) if m}
 
 
 # ------------------------------------------------------------------ unsourced facts (deterministic part)
@@ -43,12 +49,13 @@ def _same_day(a: tuple, b: tuple) -> bool:
     return a[1:] == b[1:] and (a[0] is None or b[0] is None or a[0] == b[0])
 
 
-def unsourced_facts(reply: dict) -> list[str]:
+def unsourced_facts(reply: dict, also_covered_by: str = "") -> list[str]:
     """Facts in reply.text that no claim covers. A mention is covered when some claim's text mentions the
-    same date (any shared reading), the same amount (to the cent) or the same order number."""
+    same date (any shared reading), the same amount (to the cent) or the same order number.
+    `also_covered_by` is extra text that counts as a source too (used for the conversation itself)."""
     if not reply:
         return []
-    claim_texts = " \n ".join(c["text"] for c in reply.get("claims", []))
+    claim_texts = " \n ".join(c["text"] for c in reply.get("claims", [])) + " \n " + also_covered_by
     have = fact_mentions(claim_texts)
     have_dates = set().union(*have["dates"]) if have["dates"] else set()
     missing = []
@@ -65,8 +72,16 @@ def unsourced_facts(reply: dict) -> list[str]:
     return missing
 
 
+def conversation_text(msg: dict | None, as_of: str = AS_OF) -> str:
+    """What the customer (or an earlier agent turn) already said, plus today's date: restating it is not inventing it."""
+    if not msg:
+        return ""
+    # turn timestamps are shown to the agent next to each turn, so "your email of 17 October" is sourced too
+    return "\n".join([f"today {as_of}", msg.get("subject") or ""] + [f"{t['ts'][:10]} {t['text']}" for t in msg["thread"]])
+
+
 # ------------------------------------------------------------------ per message
-def message_row(msg_id: str, run: Run, kb: dict) -> dict:
+def message_row(msg_id: str, run: Run, kb: dict, msg: dict | None = None) -> dict:
     row = score_message(msg_id, PLACEHOLDER_LABEL, run, kb, failure_policy="human")
     out = run.outputs.get(msg_id)
     log = run.logs.get(msg_id, [])
@@ -75,6 +90,7 @@ def message_row(msg_id: str, run: Run, kb: dict) -> dict:
     row["fallback"] = meta.get("handoff_reason") if meta.get("fallback") else None
     row["route"] = out["route"] if ok else FAILED
     row["unsourced"] = unsourced_facts(out["reply"]) if ok else []
+    row["unsourced_new"] = unsourced_facts(out["reply"], conversation_text(msg)) if ok and msg else row["unsourced"]
     # route the model gave vs. route its own flags imply (only differs when the model chose the route)
     row["route_self_contradiction"] = bool(ok and not row["fallback"] and out["route"] != derive_route(out["risk_flags"]))
     keys = [(r["tool"], json.dumps(r["args"], sort_keys=True)) for r in log]
@@ -103,7 +119,8 @@ def _mean(xs: list) -> float | None:
 def run_metrics(run: Run, msg_ids: list[str] | None = None) -> tuple[dict, list[dict]]:
     kb = kbmod.load_kb()
     ids = msg_ids or sorted(set(run.outputs) | set(run.errors))
-    rows = [message_row(m, run, kb) for m in ids]
+    msgs = load_messages()
+    rows = [message_row(m, run, kb, msgs.get(m)) for m in ids]
     n = len(rows)
     ok = [r for r in rows if not r["failure"]]
     agent_done = [r for r in ok if not r["fallback"]]
@@ -128,6 +145,8 @@ def run_metrics(run: Run, msg_ids: list[str] | None = None) -> tuple[dict, list[
         "contradiction_reply_rate": _ratio(sum(1 for r in replies if r["contradictions"]), len(replies)),
         "unsourced_reply_rate": _ratio(sum(1 for r in replies if r["unsourced"]), len(replies)),
         "unsourced_mentions": sum(len(r["unsourced"]) for r in rows),
+        "unsourced_new_reply_rate": _ratio(sum(1 for r in replies if r["unsourced_new"]), len(replies)),
+        "unsourced_new_mentions": sum(len(r["unsourced_new"]) for r in rows),
         "route_self_contradiction_rate": _ratio(sum(1 for r in agent_done if r["route_self_contradiction"]), len(agent_done)),
         "invalid_arg_calls": sum(r["invalid_arg_calls"] for r in rows),
         "not_found_calls": sum(r["not_found_calls"] for r in rows),
@@ -185,6 +204,8 @@ def failure_index(rows: list[dict]) -> dict[str, list[str]]:
             add("tool_contradiction", r["msg_id"])
         if r["unsourced"]:
             add("unsourced_fact", r["msg_id"])
+        if r["unsourced_new"]:
+            add("unsourced_fact_not_in_conversation", r["msg_id"])
         if r["invalid_arg_calls"]:
             add("invalid_argument_call", r["msg_id"])
         if r["identical_repeat_calls"]:
@@ -204,6 +225,8 @@ ROWS = [
     ("contradiction_reply_rate", "工具数据矛盾回复占比（日期/金额）", "pct"),
     ("unsourced_reply_rate", "含无来源事实的回复占比（日期/金额/订单号）", "pct"),
     ("unsourced_mentions", "无来源事实处数", "int"),
+    ("unsourced_new_reply_rate", "同上，但不算对话里已出现的（客户说过的日期、今天）", "pct"),
+    ("unsourced_new_mentions", "同上，处数", "int"),
     ("route_self_contradiction_rate", "路由与自报风险标签不一致", "pct"),
     ("invalid_arg_calls", "非法参数调用数", "int"),
     ("not_found_calls", "not_found 调用数", "int"),

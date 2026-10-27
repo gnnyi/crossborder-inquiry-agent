@@ -39,6 +39,9 @@ must also appear as one entry in reply.claims with its source:
   Field paths use dots for keys and [i] for list items (negative allowed), no "result." prefix,
   e.g. "status", "items[0].sku", "shipments[0].events[-1].description".
 Only cite calls whose status was "ok". A date or amount in a claim must match the cited field exactly.
+Values you work out yourself are facts too: a deadline (delivery date + 30 days), a day count, a price
+difference, a total. Give each one its own claim that states the computed value and cites the rule it applies
+(the knowledge-base lines); the inputs it was computed from need their own claims as well.
 If a fact is in neither the knowledge base nor a tool result, do not state it."""
 
 ROLE = """You are the customer-service agent of Northwren, a cross-border women's fashion store (fictional brand).

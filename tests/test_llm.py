@@ -7,7 +7,7 @@ import anthropic
 import httpx2
 import pytest
 
-from agents.llm import LLM, Budget, BudgetExceeded, FakeLLM, LLMError, Meter, cost_usd, text, tool_use
+from agents.llm import LLM, Budget, BudgetExceeded, FakeLLM, LLMError, Meter, ProviderBlocked, cost_usd, text, tool_use
 
 SYSTEM = [{"type": "text", "text": "sys"}]
 
@@ -84,5 +84,12 @@ def test_retries_are_bounded():
 def test_400_is_not_retried():
     client = _Client([_status_error(anthropic.BadRequestError, 400)])
     with pytest.raises(LLMError):
+        _llm(client).create(SYSTEM, [{"role": "user", "content": "hi"}], [])
+    assert client.calls == 1
+
+
+def test_402_stops_without_retry():
+    client = _Client([_status_error(anthropic.APIStatusError, 402)])
+    with pytest.raises(ProviderBlocked):
         _llm(client).create(SYSTEM, [{"role": "user", "content": "hi"}], [])
     assert client.calls == 1

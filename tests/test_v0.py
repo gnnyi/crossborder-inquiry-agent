@@ -171,3 +171,15 @@ def test_run_dir_refuses_a_different_config(tmp_path):
     RunDir.open("V0-b", "r", {"arch": "V0-b", "model": "a"}, root=tmp_path)
     with pytest.raises(SystemExit):
         RunDir.open("V0-b", "r", {"arch": "V0-b", "model": "b"}, root=tmp_path)
+
+
+def test_provider_blocked_is_not_written_as_a_message_failure(tmp_path):
+    from agents.llm import ProviderBlocked
+    rd = RunDir.open("V0-b", "t2", {"arch": "V0-b", "model": "fake"}, root=tmp_path)
+
+    def broke(msg, llm, sb, meter, run_id):
+        raise ProviderBlocked("402: Insufficient Balance")
+
+    with pytest.raises(ProviderBlocked):
+        run_mod.process(MSG, rd, broke, None, None, "t2")
+    assert not list((rd.path / "errors").glob("*.json"))

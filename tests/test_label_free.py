@@ -60,3 +60,11 @@ def test_unsourced_facts_coverage():
     missing = unsourced_facts({"text": "It arrives on 3 October and the refund is $12.50.", "claims": claims})
     assert len(missing) == 2
     assert unsourced_facts(None) == []
+
+
+def test_facts_already_in_the_conversation_are_split_out():
+    from scoring.label_free import conversation_text
+    msg = {"subject": "help", "thread": [{"role": "customer", "text": "I posted it on 14 October, order 10231.", "ts": "x"}]}
+    reply = {"text": "You posted it on 14 October (order 10231); today is 20 October; the deadline is 3 November.", "claims": []}
+    assert len(unsourced_facts(reply)) == 4
+    assert unsourced_facts(reply, conversation_text(msg)) == ["date (None, 11, 3)"]

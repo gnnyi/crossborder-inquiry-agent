@@ -131,7 +131,7 @@ class RunDir:
         meta_path = path / "run_meta.json"
         if meta_path.exists():
             old = json.loads(meta_path.read_text())
-            keys = ("arch", "model", "variant", "fault")
+            keys = ("arch", "model", "variant", "fault", "prompt_sha")   # a changed prompt means a different experiment
             if any(old.get(k) != meta.get(k) for k in keys):
                 raise SystemExit(f"{path} exists with a different config ({ {k: old.get(k) for k in keys} }); use a new --run-id")
         else:
@@ -160,6 +160,12 @@ class RunDir:
 
     def write_trace(self, msg_id: str, trace: list[dict]) -> None:
         _write_json(self.path / "traces" / f"{msg_id}.json", trace)
+
+
+def prompt_sha() -> str:
+    """Fingerprint of the prompt text, stored in run_meta so a run is never resumed under a different prompt."""
+    import hashlib
+    return hashlib.sha256((REPO_ROOT / "agents" / "prompts.py").read_bytes()).hexdigest()[:12]
 
 
 def _write_json(path: Path, obj: object) -> None:

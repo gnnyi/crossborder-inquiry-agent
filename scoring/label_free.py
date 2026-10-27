@@ -87,6 +87,7 @@ def message_row(msg_id: str, run: Run, kb: dict) -> dict:
     row["cache_read"] = meta.get("cache_read_tokens", 0)
     row["cache_write"] = meta.get("cache_write_tokens", 0)
     row["tokens_in_total"] = meta.get("tokens_in", 0)
+    row["v2"] = meta.get("v2")
     return row
 
 
@@ -142,10 +143,28 @@ def run_metrics(run: Run, msg_ids: list[str] | None = None) -> tuple[dict, list[
         "latency_p50_ms": _percentile(lat, 0.5),
         "latency_p95_ms": _percentile(lat, 0.95),
         "cache_hit_rate": _ratio(cache_read, tokens_in),
+        "_v2": v2_metrics([r for r in agent_done if r.get("v2")]),
         "_model": run.meta.get("model"),
         "_fault": run.meta.get("fault"),
     }
     return m, rows
+
+
+def v2_metrics(rows: list[dict]) -> dict | None:
+    """Orchestrator-worker costs of splitting context (only for runs whose outputs carry meta.v2)."""
+    if not rows:
+        return None
+    v = [r["v2"] for r in rows]
+    claims = sum(x["claims_total"] for x in v)
+    return {
+        "delegations_per_msg": _mean([sum(x["delegations"].values()) for x in v]),
+        "review_rate": _ratio(sum(1 for x in v if x["reviewed"]), len(v)),
+        "revise_verdict_rate": _ratio(sum(1 for x in v if "revise" in x["review_verdicts"]), sum(1 for x in v if x["reviewed"])),
+        "submitted_after_revise_without_rereview": sum(1 for x in v if x["review_verdicts"][-1:] == ["revise"]),
+        "worker_handoffs": sum(x["worker_handoffs"] for x in v),
+        "unresolved_questions": sum(x["unresolved_questions"] for x in v),
+        "claims_not_from_findings_rate": _ratio(sum(x["claims_not_from_findings"] for x in v), claims),
+    }
 
 
 def failure_index(rows: list[dict]) -> dict[str, list[str]]:
@@ -202,6 +221,17 @@ ROWS = [
 ]
 
 
+V2_ROWS = [
+    ("delegations_per_msg", "派单数 / 条", "f2"),
+    ("review_rate", "交卷前做过审核的比例", "pct"),
+    ("revise_verdict_rate", "审核给出 revise 的比例", "pct"),
+    ("submitted_after_revise_without_rereview", "审核说 revise 后没再审就交卷（条）", "int"),
+    ("worker_handoffs", "子 Agent 没做完的次数", "int"),
+    ("unresolved_questions", "子 Agent 报告无法回答的问题数", "int"),
+    ("claims_not_from_findings_rate", "最终 claim 的来源不在任何子 Agent 返回里", "pct"),
+]
+
+
 def fmt(v: Any, kind: str) -> str:
     if v is None:
         return "—"
@@ -231,6 +261,11 @@ def render(results: list[tuple[Run, dict]]) -> str:
     reasons = sorted({k for _, m in results for k in list(m["_failures"]) + list(m["_fallbacks"])})
     for k in reasons:
         lines.append(f"| {k} | " + " | ".join(str(m["_failures"].get(k, m["_fallbacks"].get(k, 0))) for _, m in results) + " |")
+    v2 = [(n, m["_v2"]) for n, (_, m) in zip(names, results) if m["_v2"]]
+    if v2:
+        lines += ["", "## V2 专有：上下文割裂的代价", "", "| 指标 | " + " | ".join(n for n, _ in v2) + " |", "|---|" + "---|" * len(v2)]
+        for key, label, kind in V2_ROWS:
+            lines.append(f"| {label} | " + " | ".join(fmt(x[key], kind) for _, x in v2) + " |")
     if any(str(m["_model"]).startswith("fake") for _, m in results):
         lines += ["", "> ⚠️ 含 `model=fake` 的列是脚本模拟模型的管线冒烟结果，**不是**任何架构的真实表现。"]
     return "\n".join(lines) + "\n"

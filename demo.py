@@ -17,6 +17,8 @@ import textwrap
 import time
 from pathlib import Path
 
+from dotenv import load_dotenv
+
 from agents.common import RUNS_DIR, RunDir, get_message
 from agents.llm import FakeLLM, LLM, Meter, has_api_key
 from sandbox.tools import Sandbox
@@ -91,6 +93,7 @@ def print_output(out: dict) -> None:
 
 
 def main(argv: list[str] | None = None) -> int:
+    load_dotenv()          # ANTHROPIC_API_KEY / ITER_BUDGET_USD from .env, if present
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("msg_id")
     ap.add_argument("--arch", default="V0", choices=["V0", "V1", "V2"])

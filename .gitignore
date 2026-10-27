@@ -5,3 +5,4 @@ __pycache__/
 .DS_Store
 # raw run outputs are produced locally by runners
 runs/
+.env

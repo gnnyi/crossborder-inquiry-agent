@@ -19,6 +19,8 @@ import traceback
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from pathlib import Path
 
+from dotenv import load_dotenv
+
 from agents.common import RUNS_DIR, RunDir, check_output, load_messages
 from agents.llm import Budget, BudgetExceeded, FakeLLM, LLM, Meter, has_api_key, load_models
 from sandbox.tools import FaultConfig, Sandbox
@@ -78,6 +80,7 @@ def process(msg: dict, rd: RunDir, runner, llm, fault: FaultConfig | None, run_i
 
 
 def main(argv: list[str] | None = None) -> int:
+    load_dotenv()          # ANTHROPIC_API_KEY / ITER_BUDGET_USD from .env, if present
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--arch", required=True, choices=["V0", "V1", "V2"])
     ap.add_argument("--variant", default="b", choices=["a", "b"], help="V0 only: a = model outputs route, b = code derives it")

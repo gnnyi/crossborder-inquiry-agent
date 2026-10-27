@@ -1,26 +1,141 @@
-# 跨境女装询盘 / 售后 Agent · Eval 基础设施
+# 跨境女装询盘 / 售后 Agent：三种架构的对照实验
 
-虚构品牌 **Northwren**（深圳 / 东莞仓发货，卖往 US / UK / EU / CA / AU）的询盘与售后处理 Agent。V0 / V1 / V2 三种编排架构共用这一套"尺子"：沙箱、知识库、输出契约、评分脚本、标注工具。本仓库**只有尺子，没有 agent**。
+> **English summary.**
+> An inquiry and after-sales agent for a fictional cross-border women's fashion store (Northwren), built three ways on one shared sandbox, knowledge base and output contract: V0 a hand-written single-agent loop, V1 a fixed LangGraph workflow, V2 an orchestrator with order, policy and review workers.
+> Routing (auto-reply / draft for review / escalate) is derived in code from model-reported risk flags; an ablation (V0-a vs V0-b) measures what is lost when the model decides the route itself.
+> Every factual statement in a reply carries a claim-level citation (KB line range or tool-result field), checked deterministically for ghost citations, contradictions and unsourced facts.
+> Status: all three architectures, the label-free metrics and 137 tests are done and pass; real-model runs and the human gold labels are still pending, so this README reports no accuracy numbers.
+> Limitations: fictional brand, synthetic messages, single-annotator gold labels.
+
+**当前状态（2026-10-27）**：三种架构、无标签指标、运行和演示工具都写完了，137 个测试通过。**还没有用真实模型跑过**（开发环境里没有 API key），金标也还没标。所以下面的结果表里只有占位，没有数字。
+
+## 1. 解决什么问题
+
+跨境女装独立站的客服邮箱每天收到几类消息：包裹到哪了、尺码不合适想换、降价了想补差价、收到有瑕疵、批发询价，以及少量高风险的：威胁差评、提到信用卡拒付、冒充别人查订单、在邮件里夹带"忽略之前的指令"。
+
+选这个场景的原因：
+
+- **事实密集**：回复里几乎每句话都是一个可核对的事实（日期、金额、状态、政策条款），说错就是真金白银的损失。这让"有没有编造"可以被确定性地检查。
+- **风险分层天然存在**：同样是"回复客户"，问物流可以自动发，要退款必须人审，提到律师必须转人工。这让"AI 的决策权限边界"有了具体的样子。
+- **跨语言、跨时区、新旧政策并存**：英 / 德 / 西 / 法四种语言，订单时间戳是 UTC，运费政策 9 月改过一版。这些是真实客服里最常出错的地方。
+
+品牌、订单、消息都是虚构的（`eval/`），180 条候选消息覆盖 13 类难例。
+
+## 2. 三种架构
+
+三者用同一个沙箱（`sandbox/`）、同一份知识库（`eval/kb/`）、同一份输出契约（`contract/output.schema.json`）、同一套评分（`scoring/`），**只有控制流不同**。
+
+```mermaid
+flowchart LR
+    subgraph V0["V0 单 Agent（控制流在模型）"]
+        direction TB
+        a0["模型"] -- "tool_use" --> s0["沙箱工具"]
+        s0 -- "结果（错误原样回传）" --> a0
+        a0 -- "submit_response" --> c0["契约校验<br/>（不合格回传改一次）"]
+    end
+    subgraph V1["V1 固定 workflow（控制流在代码）"]
+        direction TB
+        k1["classify<br/>模型"] --> f1["fetch<br/>代码：清洗订单号、定查什么"] --> d1["draft<br/>模型"] --> g1["risk_gate<br/>代码"]
+    end
+    subgraph V2["V2 主从多 Agent（控制流在主 Agent）"]
+        direction TB
+        o2["主 Agent<br/>只读对话"] -- "brief" --> w1["订单子 Agent"]
+        o2 -- "brief" --> w2["政策子 Agent<br/>（知识库）"]
+        o2 -- "draft + 代码解析的证据" --> w3["审核子 Agent<br/>不能调工具"]
+        w1 -- "findings" --> o2
+        w2 -- "findings" --> o2
+        w3 -- "verdict" --> o2
+    end
+    V0 --> R["route = derive_route(risk_flags)<br/>（V0-a 消融：模型自己给 route）"]
+    V1 --> R
+    V2 --> R
+```
+
+| | V0 | V1 | V2 |
+|---|---|---|---|
+| 代码 | `agents/v0.py`（146 行，无框架） | `agents/v1.py`（LangGraph） | `agents/v2.py`（复用 V0 的循环） |
+| 谁决定查什么 | 模型 | 代码，按 classify 的结果 | 主 Agent 派单，子 Agent 决定 |
+| 订单号 `#10231` | 沙箱报错，模型自己改 | fetch 节点由代码清洗 | 订单子 Agent 自己改 |
+| 路由 | V0-b：代码推导；V0-a：模型给 | 代码推导 | 代码推导 |
+
+关键设计都写成了 ADR（`docs/design_decisions.md`），V0 的逐段导读在 `docs/V0_walkthrough.md`。
+
+## 3. 结果
+
+> 无标签指标的列在真实运行后由 `scoring/label_free.py` 生成；路由、意图、风险的准确率**必须等金标**，在那之前一律是"待金标"，不填任何估计值。
+
+| 指标 | V0-a | V0-b | V1 | V2 | V0-b (Haiku) |
+|---|---|---|---|---|---|
+| 高风险捕获率（目标 ≥ 90%） | 待金标 | 待金标 | 待金标 | 待金标 | 待金标 |
+| 误拦率（目标 ≤ 10%） | 待金标 | 待金标 | 待金标 | 待金标 | 待金标 |
+| 路由准确率 | 待金标 | 待金标 | 待金标 | 待金标 | 待金标 |
+| 意图 macro-F1 | 待金标 | 待金标 | 待金标 | 待金标 | 待金标 |
+| 风险标签完全一致 | 待金标 | 待金标 | 待金标 | 待金标 | 待金标 |
+| 契约合规率 | 待实测 | 待实测 | 待实测 | 待实测 | 待实测 |
+| 失败率（含被迫转人工） | 待实测 | 待实测 | 待实测 | 待实测 | 待实测 |
+| 幽灵引用回复占比 | 待实测 | 待实测 | 待实测 | 待实测 | 待实测 |
+| 无来源事实回复占比 | 待实测 | 待实测 | 待实测 | 待实测 | 待实测 |
+| 路由与自报风险标签不一致 | 待实测 | 0（构造保证） | 0（构造保证） | 0（构造保证） | 0（构造保证） |
+| 故障注入下的恢复率 | 待实测 | 待实测 | 待实测 | 待实测 | — |
+| 成本 $/条 | 待实测 | 待实测 | 待实测 | 待实测 | 待实测 |
+| 延迟 p50 / p95 | 待实测 | 待实测 | 待实测 | 待实测 | 待实测 |
+
+## 4. 三个最重要的发现
+
+**还没有。** 发现必须有数据或 trace 支撑，而真实运行还没做。下面是三个准备验证的假设，以及用什么数据验证：
+
+1. **路由收回代码更安全**：V0-a 会出现"自报了退款标签却给 AUTO_REPLY"的自相矛盾。验证：V0-a 的"路由与自报风险标签不一致率"；有金标后比较 V0-a / V0-b 的高风险捕获率。
+2. **这个任务不需要多 Agent**：KB 只有约 6–7K tokens，单 Agent 没有上下文压力，V2 的成本会是 V0 的 1.5–2.5 倍，无标签指标不会更好。验证：`label_free.py` 的成本列和 V2 专有的"上下文割裂"表。
+3. **V1 用灵活性换可预测性**：订单号不规范、注入类消息上 V1 更稳；"查了才知道下一步查什么"的消息上 V1 会卡住。验证：非法参数调用数、trace 里草稿的"无法确认"类句子（`docs/design_decisions.md` 末尾的表）。
+
+## 5. 怎么复现
+
+```bash
+uv venv --python 3.12 .venv && uv pip install --python .venv/bin/python pyyaml jsonschema pytest anthropic langgraph python-dotenv
+cp .env.example .env                                # 填 ANTHROPIC_API_KEY 和可选的 ITER_BUDGET_USD
+.venv/bin/python -m pytest -q                       # 137 passed, 5 skipped（5 个是留给读者的练习）
+.venv/bin/python tools/check_data.py                # 数据自检，0 错误
+
+# 不花钱：脚本模拟模型跑通整条管线（结果没有比较意义）
+.venv/bin/python run.py --arch V0 --run-id smoke --fake
+.venv/bin/python demo.py m003 --arch V2 --fake
+
+# 真实运行（需要 ANTHROPIC_API_KEY；预算上限读 ITER_BUDGET_USD，默认 $30，到 85% 自动停）
+scripts/run_matrix.sh calibrate                     # 先跑 10 条，看每条成本
+scripts/run_matrix.sh baseline                      # V0-b 全量，开始迭代
+scripts/run_matrix.sh final v1                      # 迭代后的对照矩阵（按预算优先级）
+.venv/bin/python scoring/label_free.py runs/V0-b/v1-r1 runs/V1/v1-r1 --out reports/label_free.md
+
+# 有金标之后
+.venv/bin/python scoring/score.py runs/V0-b/v1-r1 runs/V0-b/v1-r2 runs/V0-b/v1-r3 --split dev --out reports/v0b-dev.md
+```
+
+## 6. 上线边界
+
+- **路由由代码决定**，模型只负责识别风险标签；策略表在 `eval/policy/risk_policy.yaml`，多个标签取最严的一档。
+- **每个事实都带出处**：审核员看到的草稿里，每条 claim 都指向 KB 的行号或某次工具调用的字段，可以逐条核对。
+- **agent 没做完就转人工**，并写明原因；崩溃写 `errors/`，不写残缺输出。
+- **上线门槛**（都还没满足）：有金标后高风险捕获率 ≥ 90%、误拦率 ≤ 10%；LLM 判官和人工的一致率 ≥ 90% 后，才能用判官统计越权承诺。
+
+## 7. 局限
+
+- **虚构品牌、合成消息**：180 条消息由 AI 生成，作者自查列出了 20 条最不像真人的（`OVERNIGHT_REPORT.md` 3.3）。结论只适合比较架构，不代表真实客户上的绝对表现。
+- **金标为单人标注**：只有一个标注者，没有标注者间一致率。
+- **确定性检查有盲区**："无来源事实"只抽日期、金额、订单号；状态描述和越权承诺要等 LLM 判官，判官还没实现、也没校准。
+- **价格表未核实**：`config/pricing.yaml` 来自工具内置的价格缓存，没有对照 docs.claude.com，成本数字可能有偏差。
+
+这个项目是 `order-incident-agent` 的延续与升级：新增了评测体系、风险路由和架构对比。
+
+## 目录
 
 | 目录 | 内容 |
 |---|---|
-| `eval/kb/` | 12 份知识库文档，每行一个事实，`doc_id` = 文件名 |
-| `eval/env/` | 30 个 SKU、60 个订单、物流事件、`meta.json`（`as_of = 2026-10-20`） |
-| `eval/policy/` | 风险策略表、意图表 |
-| `eval/messages.jsonl` | 180 条候选客户消息（不含任何标签） |
-| `eval/labels/` | 金标（由人标注，`tools/label.py` 写入） |
-| `eval/_sealed/` | 盲标 ≥50 条之前不要打开 |
-| `sandbox/` | `kb.py` 行号加载器，`tools.py` 4 个模拟接口 + 日志 + 故障注入，`tool_schemas.json` |
-| `contract/` | 输出契约与金标 schema，`validate.py` |
-| `scoring/` | `route.py` 路由推导，`score.py` 确定性指标 |
-| `tools/` | `check_data.py`、`label.py`、`agreement.py`、`split.py` |
-| `runners/README.md` | 写 runner 前先读：输出契约与沙箱用法 |
-
-```bash
-uv venv --python 3.12 .venv && uv pip install --python .venv/bin/python pyyaml jsonschema pytest
-.venv/bin/python -m pytest -q
-.venv/bin/python tools/check_data.py --stats
-.venv/bin/python tools/label.py
-```
-
-只依赖标准库、pyyaml、jsonschema、pytest；不调用任何外部 LLM API。所有人名、邮箱、地址均为虚构，邮箱只用 example.com / example.net / example.org 和 `.example` 保留域名。
+| `agents/` | `llm.py`（调用、计费、预算、重试、缓存）、`common.py`（契约、run 目录）、`prompts.py`、`v0.py`、`v1.py`、`v2.py`、`fake_scripts.py` |
+| `run.py` / `demo.py` | 统一入口 / 终端里打印一次完整 trace |
+| `scoring/` | `route.py` 路由推导、`score.py` 金标指标、`label_free.py` 无标签指标 |
+| `sandbox/` | 4 个模拟接口 + 日志 + 可复现故障注入；知识库行号加载器 |
+| `eval/` | 知识库、订单 / 商品 / 物流数据、策略表、180 条消息、标注规范；`_sealed/` 盲标前不要打开 |
+| `tools/` | 数据自检、标注、一致率、分层切分 |
+| `docs/` | 设计决策、V0 导读、迭代日志、面试准备 |
+| `config/` | 模型与价格 |
+| `scripts/run_matrix.sh` | 阶段 5 的运行矩阵，按预算优先级 |

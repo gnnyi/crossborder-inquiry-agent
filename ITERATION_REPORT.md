@@ -132,3 +132,16 @@ scripts/run_matrix.sh final v1       # 对照矩阵，按预算优先级跑，�
 - [x] `eval/labels/` 没有被写入（只有 `.gitkeep`）
 - [x] README 和报告中没有任何依赖金标的数字，也没有逐条预测结果
 - [x] 每个阶段都有 commit，没有 push
+
+
+---
+
+## 更新 · 2026-10-27：改用 DeepSeek，完成校准
+
+- **改动**：你指定用 DeepSeek V4.1 Flash。走 DeepSeek 的 Anthropic 兼容接口（`https://api.deepseek.com/anthropic`），同一个 anthropic SDK，只换 `base_url` 和 key，没有新增依赖。`config/models.yaml` 新增 `provider`（默认 `deepseek`，模型 `deepseek-flash`；`--provider anthropic` 可切回 Claude）。key 在 `.env`（gitignore），变量名 `DEEPSEEK_API_KEY`。
+- **和任务书的冲突**：铁律 6 原本只允许 Anthropic API，这次按你当下的指令放开为 DeepSeek。
+- **兼容接口的差异**：`cache_control` 被忽略（DeepSeek 对相同前缀自动缓存），`tool_result.is_error` 被忽略（错误信息仍在结果正文里，模型能看到），不发顶层 `cache_control` 和 `effort`。
+- **价格**：输入 $0.14、缓存命中 $0.0028、输出 $0.28 / 百万 tokens，来自第三方汇总，官方定价页未取到 → **未核实**。
+- **校准实测（V0-b，10 条，汇总）**：契约合规 10/10，$0.0007 / 条，缓存命中率 95.1%，平均 2.2 步，延迟 p50 约 12 秒、p95 约 24 秒；无来源事实回复占比 22.2%（2 条），是第一个可迭代的失败类别。另有 1 条单消息探测 `probe-1`。
+- **预算推算**：一次 180 条 V0 全量约 $0.13；V2 调用次数约 2 倍。任务书的完整矩阵（约 15 次全量 + 迭代重跑）估计 $3–5。`.env` 里 `ITER_BUDGET_USD=5`（85% 熔断在 $4.25）。样本只有 10 条，消息长度差异大，按 ±50% 看。
+- Haiku 那一档已从 `run_matrix.sh` 去掉；"便宜模型消融"改为以后需要时用 `--provider anthropic --model claude-haiku-5-5`。

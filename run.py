@@ -80,12 +80,13 @@ def process(msg: dict, rd: RunDir, runner, llm, fault: FaultConfig | None, run_i
 
 
 def main(argv: list[str] | None = None) -> int:
-    load_dotenv()          # ANTHROPIC_API_KEY / ITER_BUDGET_USD from .env, if present
+    load_dotenv()          # API keys / ITER_BUDGET_USD from .env, if present
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--arch", required=True, choices=["V0", "V1", "V2"])
     ap.add_argument("--variant", default="b", choices=["a", "b"], help="V0 only: a = model outputs route, b = code derives it")
     ap.add_argument("--run-id", required=True)
     ap.add_argument("--model", help="override config/models.yaml main")
+    ap.add_argument("--provider", help="override config/models.yaml provider (deepseek | anthropic)")
     ap.add_argument("--fault", help="seed,timeout_rate,not_found_rate e.g. 7,0.1,0.05")
     ap.add_argument("--limit", type=int)
     ap.add_argument("--only", help="comma-separated msg_ids")
@@ -98,16 +99,17 @@ def main(argv: list[str] | None = None) -> int:
         from agents.fake_scripts import smoke_script
         llm = FakeLLM(smoke_script)
     else:
-        if not has_api_key():
-            print("ANTHROPIC_API_KEY is not set. Use --fake for a scripted smoke run, or export the key.", file=sys.stderr)
+        if not has_api_key(args.provider):
+            key_env = load_models(args.provider)["key_env"]
+            print(f"{key_env} is not set. Use --fake for a scripted smoke run, or put the key in .env.", file=sys.stderr)
             return 2
-        llm = LLM(model=args.model, budget=Budget())
+        llm = LLM(model=args.model, budget=Budget(), provider=args.provider)
         llm.budget.check()
 
     arch_dir = args.arch + (f"-{args.variant}" if args.arch == "V0" else "")
     fault = parse_fault(args.fault)
     meta = {"arch": arch_dir, "run_id": args.run_id, "model": llm.model, "variant": args.variant if args.arch == "V0" else None,
-            "models_config": load_models(), "started_at": time.strftime("%Y-%m-%dT%H:%M:%S")}
+            "provider": getattr(llm, "provider", "fake"), "models_config": load_models(args.provider), "started_at": time.strftime("%Y-%m-%dT%H:%M:%S")}
     if fault:
         meta["fault"] = fault.to_dict()
     rd = RunDir.open(arch_dir, args.run_id, meta, root=Path(args.runs_dir))

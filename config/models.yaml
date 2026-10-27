@@ -1,6 +1,24 @@
-# 三种架构统一从这里读模型。run.py --model 可以临时覆盖 main。
-main: claude-sonnet-5-5
-cheap: claude-haiku-5-5
-# 每次请求的输出上限和思考强度（Sonnet 5.5 默认 high；agent 多步工具调用从 medium 起步）
+# 三种架构统一从这里读模型。run.py --model 可以临时覆盖 main，--provider 可以临时覆盖 provider。
+provider: deepseek
+
+providers:
+  # DeepSeek 的 Anthropic 兼容接口：同一个 anthropic SDK，只换 base_url 和 key。
+  # 文档：https://api-docs.deepseek.com/guides/anthropic_api
+  # cache_control 和 tool_result.is_error 会被忽略；DeepSeek 自己对相同前缀做自动缓存。
+  deepseek:
+    base_url: https://api.deepseek.com/anthropic
+    key_env: DEEPSEEK_API_KEY
+    main: deepseek-flash          # 目前由 DeepSeek-V4.1-Flash-1017 提供服务
+    cheap: deepseek-flash
+    effort: null                  # 不传，用服务端默认
+    auto_cache: false             # 不发顶层 cache_control（兼容接口没有列出这个字段）
+  anthropic:
+    base_url: null
+    key_env: ANTHROPIC_API_KEY
+    main: claude-sonnet-5-5
+    cheap: claude-haiku-5-5
+    effort: medium                # Sonnet 5.5 默认 high；多步工具调用从 medium 起步
+    auto_cache: true
+
+# 每次请求的输出上限
 max_tokens: 8000
-effort: medium

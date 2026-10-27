@@ -93,7 +93,7 @@ def print_output(out: dict) -> None:
 
 
 def main(argv: list[str] | None = None) -> int:
-    load_dotenv()          # ANTHROPIC_API_KEY / ITER_BUDGET_USD from .env, if present
+    load_dotenv()          # API keys / ITER_BUDGET_USD from .env, if present
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("msg_id")
     ap.add_argument("--arch", default="V0", choices=["V0", "V1", "V2"])
@@ -124,7 +124,7 @@ def main(argv: list[str] | None = None) -> int:
         elif has_api_key():
             llm = LLM()
         else:
-            print("ANTHROPIC_API_KEY is not set; use --fake or --replay.", file=sys.stderr)
+            print("No API key for the configured provider (see config/models.yaml); use --fake or --replay.", file=sys.stderr)
             return 2
         import run as run_mod
         arch_dir = args.arch + (f"-{args.variant}" if args.arch == "V0" else "")

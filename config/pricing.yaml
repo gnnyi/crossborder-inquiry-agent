@@ -15,6 +15,14 @@ models:
     output: 0.50
     cache_write: 0.125
     cache_read: 0.01
+  deepseek-flash:
+    # 第三方价格汇总（devtk.ai / eesel.ai，2026-05~08），按 DeepSeek V4 Flash 价格；官方定价页未取到 → 未核实。
+    # DeepSeek 文档说 deepseek-flash 现由 V4.1-Flash-1017 提供服务，按 Flash 价格计费。
+    # 兼容接口没有缓存写入的概念：未命中的输入按 input 计；cache_write 设成和 input 相同。
+    input: 0.14
+    output: 0.28
+    cache_write: 0.14
+    cache_read: 0.0028
   fake:
     input: 0
     output: 0

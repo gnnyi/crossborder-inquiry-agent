@@ -1,6 +1,6 @@
 """One place that talks to the Anthropic API.
 
-    llm = LLM(model="claude-sonnet-5-5")                 # real API (needs ANTHROPIC_API_KEY)
+    llm = LLM()                                           # provider + model from config/models.yaml (key from its key_env)
     llm = FakeLLM(script)                                 # replays scripted replies, no network
     reply = llm.create(system=..., messages=..., tools=..., meter=meter, tag="v0")
 
@@ -40,8 +40,14 @@ class LLMError(RuntimeError):
     """Non-retryable API failure, or retries exhausted."""
 
 
-def load_models() -> dict:
-    return yaml.safe_load((CONFIG_DIR / "models.yaml").read_text(encoding="utf-8"))
+def load_models(provider: str | None = None) -> dict:
+    """The active provider's settings flattened: provider, base_url, key_env, main, cheap, effort, auto_cache, max_tokens.
+    Provider comes from the argument, then $LLM_PROVIDER, then models.yaml."""
+    raw = yaml.safe_load((CONFIG_DIR / "models.yaml").read_text(encoding="utf-8"))
+    name = provider or os.environ.get("LLM_PROVIDER") or raw["provider"]
+    if name not in raw["providers"]:
+        raise KeyError(f"unknown provider {name!r}; config/models.yaml has {sorted(raw['providers'])}")
+    return {"provider": name, "max_tokens": raw.get("max_tokens", 8000), **raw["providers"][name]}
 
 
 def load_pricing() -> dict:
@@ -156,10 +162,12 @@ class LLM(_Base):
 
     def __init__(self, model: str | None = None, budget: Budget | None = None, max_retries: int = 4,
                  base_delay: float = 2.0, effort: str | None = None, max_tokens: int | None = None,
-                 sleep: Callable[[float], None] = time.sleep, client: Any = None) -> None:
-        cfg = load_models()
+                 sleep: Callable[[float], None] = time.sleep, client: Any = None, provider: str | None = None) -> None:
+        cfg = load_models(provider)
+        self.provider = cfg["provider"]
         self.model = model or cfg["main"]
         self.effort = effort or cfg.get("effort")
+        self.auto_cache = cfg.get("auto_cache", True)
         self.max_tokens = max_tokens or cfg.get("max_tokens", 8000)
         self.budget = budget or Budget()
         self.pricing = load_pricing()
@@ -168,7 +176,9 @@ class LLM(_Base):
         self.sleep = sleep
         if client is None:
             import anthropic
-            client = anthropic.Anthropic(max_retries=0)   # we own retries so they are counted and bounded
+            # we own retries so they are counted and bounded; base_url is explicit so a stray ANTHROPIC_BASE_URL can't redirect us
+            client = anthropic.Anthropic(api_key=os.environ.get(cfg["key_env"]), base_url=cfg.get("base_url") or "https://api.anthropic.com",
+                                         max_retries=0)
         self.client = client
 
     def create(self, system: list[dict], messages: list[dict], tools: list[dict], meter: Meter | None = None,
@@ -177,8 +187,9 @@ class LLM(_Base):
         self.budget.check()
         kwargs: dict[str, Any] = dict(
             model=self.model, max_tokens=max_tokens or self.max_tokens, system=system, messages=messages, tools=tools,
-            cache_control={"type": "ephemeral"},     # auto-breakpoint on the last block: the growing loop history is cached too
         )
+        if self.auto_cache:
+            kwargs["cache_control"] = {"type": "ephemeral"}   # auto-breakpoint on the last block: the growing loop history is cached too
         if self.effort:
             kwargs["output_config"] = {"effort": self.effort}
         for attempt in range(self.max_retries + 1):
@@ -247,5 +258,5 @@ def text(t: str) -> dict:
     return {"type": "text", "text": t}
 
 
-def has_api_key() -> bool:
-    return bool(os.environ.get("ANTHROPIC_API_KEY"))
+def has_api_key(provider: str | None = None) -> bool:
+    return bool(os.environ.get(load_models(provider)["key_env"]))

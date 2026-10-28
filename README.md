@@ -4,10 +4,12 @@
 > An inquiry and after-sales agent for a fictional cross-border women's fashion store (Northwren), built three ways on one shared sandbox, knowledge base and output contract: V0 a hand-written single-agent loop, V1 a fixed LangGraph workflow, V2 an orchestrator with order, policy and review workers.
 > Routing (auto-reply / draft for review / escalate) is derived in code from model-reported risk flags; an ablation (V0-a vs V0-b) measures what is lost when the model decides the route itself.
 > Every factual statement in a reply carries a claim-level citation (KB line range or tool-result field), checked deterministically for ghost citations, contradictions and unsourced facts.
-> Status: all three architectures, the label-free metrics and 137 tests are done and pass; real-model runs and the human gold labels are still pending, so this README reports no accuracy numbers.
+> Status: all three architectures, the label-free metrics and 142 tests are done and pass. V0-b has been run on all 180 messages with DeepSeek V4.1 Flash (baseline, a same-config repeat to measure run-to-run noise, and two iteration rounds): $0.0008 per message, 100% contract-valid. V0-a, V1 and V2 have not been run on a real model yet, and the human gold labels are still pending, so this README reports no accuracy numbers.
 > Limitations: fictional brand, synthetic messages, single-annotator gold labels.
 
-**当前状态（2026-10-27）**：三种架构、无标签指标、运行和演示工具都写完了，137 个测试通过。**还没有用真实模型跑过**（开发环境里没有 API key），金标也还没标。所以下面的结果表里只有占位，没有数字。
+**当前状态（2026-10-27）**：
+- **已完成**：三种架构、无标签指标、运行和演示工具都写完了，142 个测试通过。V0-b 用 DeepSeek V4.1 Flash 跑了 180 条全量，包括基线、一次同配置重跑（用来测波动）和两轮迭代，第 3 轮跑了 122/180 后因 API 余额不足暂停。
+- **还没做**：V0-a、V1、V2 还没有用真实模型跑过；金标还没标。所以下面没有任何准确率数字。
 
 ## 1. 解决什么问题
 
@@ -62,27 +64,36 @@ flowchart LR
 
 ## 3. 结果
 
-> 无标签指标的列在真实运行后由 `scoring/label_free.py` 生成；路由、意图、风险的准确率**必须等金标**，在那之前一律是"待金标"，不填任何估计值。
+> 下面只有无标签指标（`scoring/label_free.py` 生成）。路由、意图、风险的准确率**必须等金标**，在那之前一律不填，也不填估计值。
+> 模型：`deepseek-flash`（DeepSeek V4.1 Flash），走 DeepSeek 的 Anthropic 兼容接口；代码也支持 `--provider anthropic` 切回 Claude。
 
-| 指标 | V0-a | V0-b | V1 | V2 | V0-b (Haiku) |
-|---|---|---|---|---|---|
-| 高风险捕获率（目标 ≥ 90%） | 待金标 | 待金标 | 待金标 | 待金标 | 待金标 |
-| 误拦率（目标 ≤ 10%） | 待金标 | 待金标 | 待金标 | 待金标 | 待金标 |
-| 路由准确率 | 待金标 | 待金标 | 待金标 | 待金标 | 待金标 |
-| 意图 macro-F1 | 待金标 | 待金标 | 待金标 | 待金标 | 待金标 |
-| 风险标签完全一致 | 待金标 | 待金标 | 待金标 | 待金标 | 待金标 |
-| 契约合规率 | 待实测 | 待实测 | 待实测 | 待实测 | 待实测 |
-| 失败率（含被迫转人工） | 待实测 | 待实测 | 待实测 | 待实测 | 待实测 |
-| 幽灵引用回复占比 | 待实测 | 待实测 | 待实测 | 待实测 | 待实测 |
-| 无来源事实回复占比 | 待实测 | 待实测 | 待实测 | 待实测 | 待实测 |
-| 路由与自报风险标签不一致 | 待实测 | 0（构造保证） | 0（构造保证） | 0（构造保证） | 0（构造保证） |
-| 故障注入下的恢复率 | 待实测 | 待实测 | 待实测 | 待实测 | — |
-| 成本 $/条 | 待实测 | 待实测 | 待实测 | 待实测 | 待实测 |
-| 延迟 p50 / p95 | 待实测 | 待实测 | 待实测 | 待实测 | 待实测 |
+| 指标（V0-b，180 条） | 基线 | 同配置重跑两次（波动范围） | 第 2 轮后 |
+|---|---|---|---|
+| 契约合规率 | 100% | 100% / 100% | 100% |
+| 失败率（含被迫转人工） | 0.6% | 0.0% / 1.1% | 0.6% |
+| 幽灵引用回复占比 | 1.1% | 2.4% / 0.0% | 1.7% |
+| 无来源事实回复占比（日期 / 金额 / 订单号） | 9.8% | 6.5% / 7.6% | 4.0% |
+| 同上，不算客户自己在对话里说过的 | 4.6% | 2.4% / 1.8% | 1.1% |
+| 工具数据矛盾回复占比 | 0% | 0% / 0% | 0.6% |
+| 路由与自报风险标签不一致 | 0（构造保证） | 0 / 0 | 0 |
+| 成本 $/条 | $0.0008 | $0.0008 / $0.0008 | $0.0008 |
+| 缓存命中率 | 95.4% | 95.1% / 96.1% | 94.3% |
+| 延迟 p50 / p95 | 12.0s / 25.8s | 11.9s / 28.2s · 12.0s / 29.3s | 11.9s / 26.2s |
 
-## 4. 三个最重要的发现
+- "同配置重跑"列的两次运行用的是第 1 轮的 prompt，代码完全相同（prompt 指纹一致）。两次之间的差就是模型本身的随机波动。
+- 金标指标（高风险捕获率、误拦率、路由准确率、意图 macro-F1）：**待金标**。
+- V0-a、V1、V2：**还没有真实运行**。三者的对比结论目前只是假设，见第 4 节。
+- 每一轮改了什么、为什么改、结果怎样，见 `docs/iteration_log.md`。
 
-**还没有。** 发现必须有数据或 trace 支撑，而真实运行还没做。下面是三个准备验证的假设，以及用什么数据验证：
+## 4. 发现
+
+### 已有数据支撑的
+
+1. **重跑波动比单轮改进还大，所以要先测噪声，再谈改进。** 同一配置跑两次：幽灵引用一次 4 条、一次 0 条；被迫转人工一次 0 条、一次 2 条；自动回复占比相差 5 个百分点。只看一次运行，第 1 轮"幽灵引用从 2 条变成 4 条"会被误读成退步。所以迭代日志只把"两次运行方向一致、并且超出波动"的变化算作改进。
+2. **最典型的错误来自我们自己写的说明，不是模型。** 基线里有几条回复在向客户索要订单号时写了"例如 10231"，被指标判为无来源的订单号。读执行轨迹后发现，这个号码出自我们自己写的 `get_order` 工具描述，而它恰好是沙箱里另一位客户的真实订单号。修复是把示例号换成格式说明，属于工具描述层，成本最低的一层。修复后这类错误从每次 2–3 条降到 0。
+3. **无标签指标本身也要迭代。** 第一版"无来源事实"把客户自己说过的日期和订单号也算作编造：输出契约里没有"来自对话"这种来源类型。读了轨迹才发现这一点，于是新增一列不算对话里已出现的内容，原列保留、统计口径不变。
+
+### 还待验证的假设（V0-a / V1 / V2 跑完后才能回答）
 
 1. **路由收回代码更安全**：V0-a 会出现"自报了退款标签却给 AUTO_REPLY"的自相矛盾。验证：V0-a 的"路由与自报风险标签不一致率"；有金标后比较 V0-a / V0-b 的高风险捕获率。
 2. **这个任务不需要多 Agent**：KB 只有约 6–7K tokens，单 Agent 没有上下文压力，V2 的成本会是 V0 的 1.5–2.5 倍，无标签指标不会更好。验证：`label_free.py` 的成本列和 V2 专有的"上下文割裂"表。
@@ -92,15 +103,16 @@ flowchart LR
 
 ```bash
 uv venv --python 3.12 .venv && uv pip install --python .venv/bin/python pyyaml jsonschema pytest anthropic langgraph python-dotenv
-cp .env.example .env                                # 填 ANTHROPIC_API_KEY 和可选的 ITER_BUDGET_USD
-.venv/bin/python -m pytest -q                       # 137 passed, 5 skipped（5 个是留给读者的练习）
+cp .env.example .env                                # 填 DEEPSEEK_API_KEY（默认）或 ANTHROPIC_API_KEY，和可选的 ITER_BUDGET_USD
+.venv/bin/python -m pytest -q                       # 142 passed, 5 skipped（5 个是留给读者的练习）
 .venv/bin/python tools/check_data.py                # 数据自检，0 错误
 
 # 不花钱：脚本模拟模型跑通整条管线（结果没有比较意义）
 .venv/bin/python run.py --arch V0 --run-id smoke --fake
 .venv/bin/python demo.py m003 --arch V2 --fake
 
-# 真实运行（需要 ANTHROPIC_API_KEY；预算上限读 ITER_BUDGET_USD，默认 $30，到 85% 自动停）
+# 真实运行（默认 DeepSeek，--provider anthropic 切到 Claude；预算上限读 ITER_BUDGET_USD，默认 $30，到 85% 自动停）
+# V0-b 全量一次约 $0.14（deepseek-flash）
 scripts/run_matrix.sh calibrate                     # 先跑 10 条，看每条成本
 scripts/run_matrix.sh baseline                      # V0-b 全量，开始迭代
 scripts/run_matrix.sh final v1                      # 迭代后的对照矩阵（按预算优先级）
@@ -122,7 +134,9 @@ scripts/run_matrix.sh final v1                      # 迭代后的对照矩阵�
 - **虚构品牌、合成消息**：180 条消息由 AI 生成，作者自查列出了 20 条最不像真人的（`OVERNIGHT_REPORT.md` 3.3）。结论只适合比较架构，不代表真实客户上的绝对表现。
 - **金标为单人标注**：只有一个标注者，没有标注者间一致率。
 - **确定性检查有盲区**："无来源事实"只抽日期、金额、订单号；状态描述和越权承诺要等 LLM 判官，判官还没实现、也没校准。
-- **价格表未核实**：`config/pricing.yaml` 来自工具内置的价格缓存，没有对照 docs.claude.com，成本数字可能有偏差。
+- **价格表未核实**：`config/pricing.yaml` 里 deepseek-flash 的单价来自第三方资料，没有对照 DeepSeek 官方价格页，成本数字可能有偏差；实际扣费以 DeepSeek 控制台为准。
+- **模型名是别名**：`deepseek-flash` 由 DeepSeek 指向具体版本（文档说目前是 V4.1-Flash-1017），版本更换会混进对比；目前所有运行都在同一天内完成。
+- **迭代样本小**：每一类错误只有 1–3 条，改进只记作"方向一致"，可能过拟合，详见 `docs/iteration_log.md`。
 
 这个项目是 `order-incident-agent` 的延续与升级：新增了评测体系、风险路由和架构对比。
 
@@ -134,7 +148,7 @@ scripts/run_matrix.sh final v1                      # 迭代后的对照矩阵�
 | `run.py` / `demo.py` | 统一入口 / 终端里打印一次完整 trace |
 | `scoring/` | `route.py` 路由推导、`score.py` 金标指标、`label_free.py` 无标签指标 |
 | `sandbox/` | 4 个模拟接口 + 日志 + 可复现故障注入；知识库行号加载器 |
-| `eval/` | 知识库、订单 / 商品 / 物流数据、策略表、180 条消息、标注规范；`_sealed/` 盲标前不要打开 |
+| `eval/` | 知识库、订单 / 商品 / 物流数据、策略表、180 条消息、标注规范（生成消息时的封存说明 `_sealed/` 不在公开仓库里，避免评测集答案泄露） |
 | `tools/` | 数据自检、标注、一致率、分层切分 |
 | `docs/` | 设计决策、V0 导读、迭代日志、面试准备 |
 | `config/` | 模型与价格 |

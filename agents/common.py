@@ -11,7 +11,9 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from contract.validate import validate_output
+from sandbox import kb as kbmod
 from scoring.route import derive_route
+from scoring.score import MISSING, resolve_field
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 MESSAGES_PATH = REPO_ROOT / "eval" / "messages.jsonl"
@@ -103,6 +105,81 @@ def check_output(out: dict, tool_log: list[dict]) -> list[str]:
     return validate_output(out, log_view, expected_msg_id=out.get("msg_id"))
 
 
+def citation_errors(submitted: dict, tool_log: list[dict]) -> list[str]:
+    """Claim sources that point at nothing: the same ghost-citation checks the scorer runs, worded as
+    instructions the model can act on. Used at submit time, so a bad source is fixed before it is written."""
+    reply = submitted.get("reply")
+    if not isinstance(reply, dict) or not isinstance(reply.get("claims"), list):
+        return []
+    kb = kbmod.load_kb()
+    logged = {r["call_id"]: r for r in tool_log}
+    errors = []
+    for i, claim in enumerate(reply["claims"]):
+        src = claim.get("source") if isinstance(claim, dict) else None
+        if not isinstance(src, dict):
+            continue
+        if src.get("type") == "kb":
+            lines = src.get("lines")
+            if src.get("doc_id") not in kb:
+                errors.append(f"claims[{i}]: unknown doc_id {src.get('doc_id')!r}.")
+            elif isinstance(lines, list) and len(lines) == 2 and not kbmod.is_valid_span(src["doc_id"], *lines, kb):
+                errors.append(f"claims[{i}]: {src['doc_id']} has lines 1-{len(kb[src['doc_id']])}; {lines} is out of range.")
+        elif src.get("type") == "tool":
+            rec = logged.get(src.get("call_id"))
+            if rec is None:
+                errors.append(f"claims[{i}]: there is no call {src.get('call_id')!r}.")
+            elif rec["status"] != "ok":
+                errors.append(f"claims[{i}]: call {rec['call_id']} returned {rec['status']}, so it has no fields to cite. "
+                              "A failed lookup needs no claim: say in the reply that you could not find it, and drop this claim.")
+            elif resolve_field(rec["result"], src.get("field") or "") is MISSING:
+                keys = sorted(rec["result"]) if isinstance(rec["result"], dict) else []
+                errors.append(f"claims[{i}]: field {src.get('field')!r} is not in the result of {rec['call_id']} "
+                              f"({rec['tool']}; top-level fields: {', '.join(keys)}). Cite the call and path where the value is.")
+    return errors
+
+
+SOURCE_SHAPES = ('a claim source is either {"type": "kb", "doc_id": "<doc_id>", "lines": [start, end]} '
+                 '(always two line numbers; one line is [n, n]) or {"type": "tool", "call_id": "<call_id>", "field": "<path>"}')
+
+
+def explain_submit_errors(submitted: dict, errors: list[str]) -> list[str]:
+    """Rewrite validator errors the model cannot act on into ones it can.
+
+    An empty submission gets one plain instruction instead of a list of missing fields; a reply rejected with
+    jsonschema's opaque "not valid under any of the given schemas" is replaced by what is wrong with each claim.
+    The checks themselves do not change: this only runs on submissions the validator already rejected."""
+    if not errors:
+        return errors
+    if not submitted:
+        return ["submit_response arrived with no arguments at all (an empty object). Call submit_response again "
+                "with every field filled in: intents, priority, risk_flags, reply (or null), handoff_note (or null)."]
+    out = [e for e in errors if not (e.startswith("reply:") and "is not valid under any of the given schemas" in e)]
+    if len(out) == len(errors):
+        return errors
+    reply = submitted.get("reply")
+    detail = []
+    if isinstance(reply, dict):
+        extra = sorted(set(reply) - {"text", "claims"})
+        if extra:
+            detail.append(f"reply has unknown keys {extra}; it takes only text and claims.")
+        for i, claim in enumerate(reply.get("claims") or []):
+            src = claim.get("source") if isinstance(claim, dict) else None
+            if not isinstance(src, dict):
+                detail.append(f"claims[{i}] needs a text and a source object.")
+            elif src.get("type") == "kb":
+                lines = src.get("lines")
+                if not (isinstance(lines, list) and len(lines) == 2 and all(isinstance(n, int) and n >= 1 for n in lines)):
+                    detail.append(f"claims[{i}].source.lines is {lines!r}; it must be two line numbers [start, end], [n, n] for one line.")
+                elif set(src) - {"type", "doc_id", "lines"}:
+                    detail.append(f"claims[{i}].source has extra keys {sorted(set(src) - {'type', 'doc_id', 'lines'})}.")
+            elif src.get("type") == "tool":
+                if set(src) != {"type", "call_id", "field"}:
+                    detail.append(f"claims[{i}].source must have exactly type, call_id and field.")
+            else:
+                detail.append(f"claims[{i}].source.type is {src.get('type')!r}; it must be \"kb\" or \"tool\".")
+    return out + (detail or ["reply does not match the contract."]) + [SOURCE_SHAPES + "."]
+
+
 def handoff_output(msg_id: str, reason: str, tool_log: list[dict], meta: dict) -> dict:
     """What the system emits when the agent could not finish: route to a human with the reason.
     intents=[OTHER] is a placeholder the contract requires; meta.fallback marks it."""
@@ -163,9 +240,13 @@ class RunDir:
 
 
 def prompt_sha() -> str:
-    """Fingerprint of the prompt text, stored in run_meta so a run is never resumed under a different prompt."""
+    """Fingerprint of everything an iteration round may change: prompt text, tool descriptions and agent code.
+    Stored in run_meta so a run is never resumed under a different version."""
     import hashlib
-    return hashlib.sha256((REPO_ROOT / "agents" / "prompts.py").read_bytes()).hexdigest()[:12]
+    h = hashlib.sha256()
+    for f in [REPO_ROOT / "sandbox" / "tool_schemas.json", *sorted((REPO_ROOT / "agents").glob("*.py"))]:
+        h.update(f.read_bytes())
+    return h.hexdigest()[:12]
 
 
 def _write_json(path: Path, obj: object) -> None:

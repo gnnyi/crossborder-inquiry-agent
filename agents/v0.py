@@ -14,7 +14,7 @@ from collections.abc import Callable
 from dataclasses import dataclass, field
 
 from agents import prompts
-from agents.common import assemble_output, check_output, handoff_output, render_message, submit_tool, tool_result_payload
+from agents.common import assemble_output, check_output, citation_errors, handoff_output, render_message, submit_tool, tool_result_payload
 from agents.llm import Meter
 from sandbox.tools import Sandbox, load_tool_schemas
 
@@ -135,7 +135,8 @@ def run_v0(msg: dict, llm, sandbox: Sandbox, meter: Meter, variant: str = "b", l
 
     def check(submitted: dict) -> list[str]:
         # same checks the scorer runs, against what the sandbox actually logged
-        return check_output(assemble_output(msg["msg_id"], submitted, sandbox.log, meta(), variant), sandbox.log)
+        errors = check_output(assemble_output(msg["msg_id"], submitted, sandbox.log, meta(), variant), sandbox.log)
+        return errors or citation_errors(submitted, sandbox.log)
 
     res = agent_loop(llm, system, render_message(msg), tools, sandbox.call, check, limits, meter, tag="v0")
     if res.submitted is None:

@@ -3,11 +3,11 @@
   "tools": [
     {
       "name": "get_order",
-      "description": "Look up one order by its order number. Returns the full order: customer email and name, status, line items, discount, amounts, shipping address, shipping method, shipments, return / cancellation / exception info. The order number must be digits only (for example \"10231\"); any other format returns invalid_argument.",
+      "description": "Look up one order by its order number. Returns the full order: customer email and name, status, line items, discount, amounts, shipping address, shipping method, shipments, return / cancellation / exception info. The order number must be digits only: no \"#\", letter prefix or spaces; any other format returns invalid_argument.",
       "input_schema": {
         "type": "object",
         "properties": {
-          "order_id": {"type": "string", "description": "Order number, digits only, e.g. \"10231\"."}
+          "order_id": {"type": "string", "description": "Order number, digits only (strip \"#\", letter prefixes and spaces)."}
         },
         "required": ["order_id"],
         "additionalProperties": false
@@ -31,7 +31,7 @@
       "input_schema": {
         "type": "object",
         "properties": {
-          "order_id": {"type": "string", "description": "Order number, digits only, e.g. \"10231\"."}
+          "order_id": {"type": "string", "description": "Order number, digits only (strip \"#\", letter prefixes and spaces)."}
         },
         "required": ["order_id"],
         "additionalProperties": false

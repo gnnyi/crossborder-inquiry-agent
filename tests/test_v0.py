@@ -183,3 +183,31 @@ def test_provider_blocked_is_not_written_as_a_message_failure(tmp_path):
     with pytest.raises(ProviderBlocked):
         run_mod.process(MSG, rd, broke, None, None, "t2")
     assert not list((rd.path / "errors").glob("*.json"))
+
+
+def test_citation_errors_catch_failed_calls_and_missing_fields():
+    from agents.common import citation_errors
+    log = [{"call_id": "c1", "tool": "get_order", "args": {"order_id": "1"}, "status": "not_found", "result": None, "error": "order not found"},
+           {"call_id": "c2", "tool": "get_tracking", "args": {"order_id": "2"}, "status": "ok", "result": {"shipments": [{"status": "x"}]}, "error": None}]
+    claims = [{"text": "no order", "source": {"type": "tool", "call_id": "c1", "field": "error"}},
+              {"text": "delivered", "source": {"type": "tool", "call_id": "c2", "field": "shipments[0].delivered_at"}},
+              {"text": "status", "source": {"type": "tool", "call_id": "c2", "field": "shipments[0].status"}}]
+    errors = citation_errors({"reply": {"text": "t", "claims": claims}}, log)
+    assert len(errors) == 2
+    assert errors[0].startswith("claims[0]") and "drop this claim" in errors[0]
+    assert errors[1].startswith("claims[1]") and "top-level fields: shipments" in errors[1]
+    assert citation_errors({"reply": None}, log) == []
+
+
+def test_submit_errors_are_rewritten_into_actionable_ones():
+    from agents.common import explain_submit_errors
+    assert "no arguments" in explain_submit_errors({}, ["intents: None is not of type 'array'"])[0]
+    sub = {"intents": ["OTHER"], "reply": {"text": "t", "claims": [
+        {"text": "a", "source": {"type": "kb", "doc_id": "size_guide", "lines": [16]}},
+        {"text": "b", "source": {"type": "tool", "call_id": "c1", "field": "x"}}]}}
+    errs = explain_submit_errors(sub, ["reply: {...} is not valid under any of the given schemas"])
+    assert any("claims[0].source.lines" in e for e in errs)
+    assert not any("claims[1]" in e for e in errs)
+    assert not any("any of the given schemas" in e for e in errs)
+    assert explain_submit_errors(sub, []) == []
+    assert explain_submit_errors(sub, ["priority: x"]) == ["priority: x"]
